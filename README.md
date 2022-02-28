@@ -8,7 +8,7 @@
   <img src="https://user-images.githubusercontent.com/55391556/155717453-752decef-3340-4ecc-8599-fee58a7a64d9.png" alt="logo" width="200" height="200">
 </h1>  
 <p align="center">
-  <h1 align="center">The goal of a Monster Hunter is to be in harmony with nature, not destroy it.</h1>
+  <h1 align="center">Join The Hunt</h1>
   </p>
  <h1 align="center">
   <br>
@@ -40,7 +40,7 @@ For this project, I chose to create the inventory system for a game, namely Mons
      <h1 align="center"> 💻 Workspace Spec</h1>
   </p>
   <p align="center">
-  <img src="https://img.shields.io/badge/Apple-MacBook_Air_2021-999999?style=for-the-badge&logo=apple&logoColor=pink" />
+  <img src="https://img.shields.io/badge/Apple-MacBook_Air_2022-999999?style=for-the-badge&logo=apple&logoColor=pink" />
   </p>
 <p align="center">
     <br />
@@ -169,21 +169,47 @@ Here are a couple of ways to clone this repo:
 
 ### Ideation
 
-<p align="center">
- <img src=""/> 
+<p>
+ <img src="https://user-images.githubusercontent.com/55391556/155934509-47496c17-9477-42e5-aaba-51e76cf78621.jpg" width="500" height="300"/> 
 
+ <img src="https://user-images.githubusercontent.com/55391556/155934746-11d4a3ef-e5ca-498b-8e19-ff89e1d1362f.jpg" width="500" height="300"/> 
+</p>
+
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/55391556/155935013-6d83a857-70f4-4166-9e16-6d3b9814e517.jpg" width="1400" height="600"/> 
 </p>
 
 ### Wireframes
 
+
+<p>
+ <img src="https://user-images.githubusercontent.com/55391556/155935093-7401cb35-e9d0-4774-96ea-c3402e6ff644.jpg" width="500" height="300"/> 
+  
+  <img src="https://user-images.githubusercontent.com/55391556/155935638-2af89ac7-79fe-4ee6-a7e1-965fa8d7fb0d.jpg" width="500" height="300"/> 
+</p>
+
+<p>
+ <img src="https://user-images.githubusercontent.com/55391556/155935720-bf2d253e-b59a-4dff-bd15-db87a17c3952.jpg" width="500" height="300"/> 
+  
+  <img src="https://user-images.githubusercontent.com/55391556/155935759-4086ce56-d1e0-4be7-8a8d-f3ba911278f0.jpg" width="500" height="300"/> 
+</p>
+
+
+<p>
+ <img src="https://user-images.githubusercontent.com/55391556/155935819-fba59e63-38b0-4301-a33f-9cca7417d376.jpg" width="500" height="300"/> 
+  
+  <img src="https://user-images.githubusercontent.com/55391556/155935858-7db9f942-142f-449f-a0eb-68d80abe2718.jpg" width="500" height="300"/> 
+</p>
+
 <p align="center">
- <img src=""/> 
+ <img src="https://user-images.githubusercontent.com/55391556/155935911-ac1bae04-b949-40d7-92e4-ce64143d331e.jpg" width="500" height="300"/> 
 </p>
 
 ### User-Flow Diagram
 
+
 <p align="center">
- <img src=""/> 
+ <img src="https://user-images.githubusercontent.com/55391556/155934387-a72bdea3-f197-416e-9492-6cd74f9fd1c7.jpg"/> 
 </p>
 
 ### ERD Diagram
@@ -285,7 +311,7 @@ Contributions are what make the open source community such an amazing place to b
 ## Authors
 
 <p align="center">
- <img src=""/> 
+ <img src="https://user-images.githubusercontent.com/55391556/155936666-2982ca1a-1b48-4938-922a-df82470e8cfb.jpg"/> 
 </p>
 
 
@@ -293,7 +319,7 @@ Contributions are what make the open source community such an amazing place to b
 I'm currently Studying Interaction Design and Interactive Development.
 
 #### Interests Include:
-Gorillaz, Gaming and Art, UI and UX design, Anything that's in pixelated art style, App and Web Development and Design.
+Monster Hunter Franchise & RPG Gaming, Gaming and Art, UI and UX design, Anything that's in pixelated art style, App and Web Development and Design.
 
 #### My Goals are:
 Successful web designer and developer.
@@ -312,7 +338,10 @@ Student Number - 190025
 <br>
 Email - 190025@virtualwindow.co.za
 <br>
-Project Link: [https://github.com/Jeandre-jpg/Bookarazzi.git](https://github.com/Jeandre-jpg/Bookarazzi.git)
+Project Link: [https://github.com/Jeandre-jpg/MonsterHunterWorld](https://github.com/Jeandre-jpg/MonsterHunterWorld)
 
 
 ## Acknowledgements
+1. Fussel, G. 2019. The Origins, History, and Design Power of Neon Colours. ShutterStock. https://www.shutterstock.com/blog/neon-colors-history-design
+2. Kulkarni , A. 2020. Dark Mode UI: the definitive guide. UX Design. https://uxdesign.cc/dark-modeui-design-the-definitive-guidepart-1-color-53dcfaea5129
+3. nier papikian. 2020. Bloodmoon UI. Hunt: Showdown Game UI + UX. Behance. https://www.behance.net/gallery/85530137/Bloodmoon-UIHunt-Showdown-Game-UIUXConcept
