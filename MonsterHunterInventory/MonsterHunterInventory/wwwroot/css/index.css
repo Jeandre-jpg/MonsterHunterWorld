@@ -2,7 +2,13 @@
 
 body {
     margin: 0;
-    background-color: #122126;
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    font-weight: var(--bs-body-font-weight);
+    line-height: var(--bs-body-line-height);
+    color: var(--bs-body-color);
+    text-align: var(--bs-body-text-align);
+    background-color: black;
     -webkit-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -19,11 +25,14 @@ hr {
         height: 1px;
     }
 
+
+
 .p {
     font-family: 'Hubballi', cursive;
     margin-bottom: 0.5rem;
     font-weight: 100;
     line-height: 1.2;
+    color: white;
 }
 
 .h1 {
@@ -36,6 +45,7 @@ hr {
 
 h1, .h1 {
     font-size: calc(1.375rem + 1.5vw);
+    color: white;
 }
 
 @media (min-width: 1200px) {
@@ -99,6 +109,38 @@ p {
         justify-content: center;
         position: relative;
     }
+
+.container_btn {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+    .container_btn img {
+        width: 100%;
+        height: auto;
+    }
+
+    .container_btn .btn_read {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        background-color: #555;
+        color: white;
+        font-size: 16px;
+        padding: 12px 24px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        text-align: center;
+    }
+
+
+.page-top {
+    padding-top: 9.5rem;
+}
 
 
 

@@ -636,19 +636,19 @@ ul.pagination .active a {
 }
 
 .bg-1 {
-    background: url("../images/home/hero.jpg");
+    background: url("../img/header_1.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .bg-2 {
-    background: url(../images/subscription/subscription-back.jpg);
+    background: url("../img/header_2.jpg");
     background-size: cover;
     background-repeat: no-repeat;
 }
 
 .bg-3 {
-    background: url(../images/call-to-action/cta-background.jpg);
+    background: url("../img/header_3.jpg");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -941,76 +941,6 @@ ul.pagination .active a {
     }
 }
 
-.short-popular-category-list {
-    margin-top: 40px;
-}
-
-    .short-popular-category-list h2 {
-        font-size: 14px;
-        text-transform: uppercase;
-        font-weight: bold;
-        color: #fff;
-    }
-
-    .short-popular-category-list ul {
-        margin-top: 20px;
-    }
-
-        .short-popular-category-list ul li {
-            margin: 0 2px;
-        }
-
-            .short-popular-category-list ul li a {
-                border: 1px solid #404040;
-                color: #c1c1c1;
-                font-weight: 200;
-                padding: 4px 10px;
-                font-size: 12px;
-            }
-
-                .short-popular-category-list ul li a i {
-                    margin-right: 2px;
-                }
-
-.page-breadcrumb {
-    background: none;
-    margin-top: 10px;
-    margin-bottom: 0;
-}
-
-    .page-breadcrumb li a {
-        color: #fff;
-    }
-
-    .page-breadcrumb li.active {
-        color: #fff !important;
-    }
-
-.category-slider {
-    box-shadow: 0px 0px 27px 0px rgba(0, 0, 0, 0.07);
-    background: #fff;
-    padding: 20px 0;
-}
-
-    .category-slider .item {
-        text-align: center;
-    }
-
-        .category-slider .item a {
-            display: inline-block;
-            padding: 20px 40px;
-            background: #fff;
-        }
-
-            .category-slider .item a h4 {
-                font-size: 14px;
-                margin-top: 10px;
-            }
-
-            .category-slider .item a i {
-                font-size: 40px;
-            }
-
 .user-dashboard-menu li {
     margin-bottom: 5px;
 }
@@ -1140,10 +1070,7 @@ ul.pagination .active a {
         color: #59d659;
     }
 
-.dashboard-container .product-category {
-    width: 15%;
-    text-align: center;
-}
+
 
 .dashboard-container .action {
     width: 20%;
