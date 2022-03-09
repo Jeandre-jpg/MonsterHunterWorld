@@ -170,9 +170,9 @@ Here are a couple of ways to clone this repo:
 ### Ideation
 
 <p>
- <img src="https://user-images.githubusercontent.com/55391556/155934509-47496c17-9477-42e5-aaba-51e76cf78621.jpg" width="450" height="300"/> 
+ <img src="https://user-images.githubusercontent.com/55391556/155934509-47496c17-9477-42e5-aaba-51e76cf78621.jpg" width="1400" height="600"/> 
 
- <img src="https://user-images.githubusercontent.com/55391556/155934746-11d4a3ef-e5ca-498b-8e19-ff89e1d1362f.jpg" width="450" height="300"/> 
+ <img src="https://user-images.githubusercontent.com/55391556/155934746-11d4a3ef-e5ca-498b-8e19-ff89e1d1362f.jpg" width="1400" height="600"/> 
 </p>
 
 <p align="center">
@@ -183,26 +183,26 @@ Here are a couple of ways to clone this repo:
 
 
 <p>
- <img src="https://user-images.githubusercontent.com/55391556/155935093-7401cb35-e9d0-4774-96ea-c3402e6ff644.jpg" width="450" height="300"/> 
+ <img src="https://user-images.githubusercontent.com/55391556/155935093-7401cb35-e9d0-4774-96ea-c3402e6ff644.jpg" width="1400" height="600"/> 
   
-  <img src="https://user-images.githubusercontent.com/55391556/155935638-2af89ac7-79fe-4ee6-a7e1-965fa8d7fb0d.jpg" width="450" height="300"/> 
+  <img src="https://user-images.githubusercontent.com/55391556/155935638-2af89ac7-79fe-4ee6-a7e1-965fa8d7fb0d.jpg" width="1400" height="600"/> 
 </p>
 
 <p>
- <img src="https://user-images.githubusercontent.com/55391556/155935720-bf2d253e-b59a-4dff-bd15-db87a17c3952.jpg" width="450" height="300"/> 
+ <img src="https://user-images.githubusercontent.com/55391556/155935720-bf2d253e-b59a-4dff-bd15-db87a17c3952.jpg" width="1400" height="600"/> 
   
-  <img src="https://user-images.githubusercontent.com/55391556/155935759-4086ce56-d1e0-4be7-8a8d-f3ba911278f0.jpg" width="450" height="300"/> 
+  <img src="https://user-images.githubusercontent.com/55391556/155935759-4086ce56-d1e0-4be7-8a8d-f3ba911278f0.jpg" width="1400" height="600"/> 
 </p>
 
 
 <p>
- <img src="https://user-images.githubusercontent.com/55391556/155935819-fba59e63-38b0-4301-a33f-9cca7417d376.jpg" width="450" height="300"/> 
+ <img src="https://user-images.githubusercontent.com/55391556/155935819-fba59e63-38b0-4301-a33f-9cca7417d376.jpg" width="1400" height="600"/> 
   
-  <img src="https://user-images.githubusercontent.com/55391556/155935858-7db9f942-142f-449f-a0eb-68d80abe2718.jpg" width="450" height="300"/> 
+  <img src="https://user-images.githubusercontent.com/55391556/155935858-7db9f942-142f-449f-a0eb-68d80abe2718.jpg" width="1400" height="600"/> 
 </p>
 
 <p align="center">
- <img src="https://user-images.githubusercontent.com/55391556/155935911-ac1bae04-b949-40d7-92e4-ce64143d331e.jpg" width="450" height="300"/> 
+ <img src="https://user-images.githubusercontent.com/55391556/155935911-ac1bae04-b949-40d7-92e4-ce64143d331e.jpg" width="1400" height="600"/> 
 </p>
 
 ### User-Flow Diagram
