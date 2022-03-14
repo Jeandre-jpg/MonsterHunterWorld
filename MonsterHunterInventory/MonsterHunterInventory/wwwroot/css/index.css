@@ -1,17 +1,59 @@
 ﻿
-
-body {
-    margin: 0;
-    font-family: var(--bs-body-font-family);
-    font-size: var(--bs-body-font-size);
-    font-weight: var(--bs-body-font-weight);
-    line-height: var(--bs-body-line-height);
-    color: var(--bs-body-color);
-    text-align: var(--bs-body-text-align);
-    background-color: black;
-    -webkit-text-size-adjust: 100%;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+html, body {
+    width: 100%;
+    height: 100%;
 }
+
+.container_btn {
+    position: relative;
+    background-image: url("./img/button_img.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+}
+
+.container_btn_2 {
+    position: relative;
+    background-image: url("./img/button_img.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+}
+
+.btn_read_2 {
+    position: absolute;
+    left: 30px;
+    top: 40px;
+    border: none;
+    background-color: rgba(0, 0,0,0);
+    width: 100px;
+    padding-left: -50px;
+}
+
+
+.btn_read {
+    position: absolute;
+    left: 80px;
+    top: 40px;
+    border: none;
+    background-color: rgba(0, 0,0,0);
+    width: 100px;
+    padding-left: -50px;
+}
+
+h2 {
+    text-align: center;
+    background-color: rgba(256, 256,256,0.5);
+    font-size: 30px;
+}
+
+button:hover {
+    background-color: blue;
+    color: white;
+}
+
 
 hr {
     margin: 1rem 0;
@@ -108,33 +150,6 @@ p {
         align-items: center;
         justify-content: center;
         position: relative;
-    }
-
-.container_btn {
-    position: relative;
-    width: 100%;
-    max-width: 400px;
-}
-
-    .container_btn img {
-        width: 100%;
-        height: auto;
-    }
-
-    .container_btn .btn_read {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        background-color: #555;
-        color: white;
-        font-size: 16px;
-        padding: 12px 24px;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-        text-align: center;
     }
 
 

@@ -7,6 +7,8 @@
   <ItemGroup>
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="Resources\" />
+    <None Remove="Models\" />
+    <None Remove="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
@@ -14,6 +16,8 @@
   <ItemGroup>
     <Folder Include="Resources\" />
     <Folder Include="wwwroot\img\" />
+    <Folder Include="Models\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\img\" />
