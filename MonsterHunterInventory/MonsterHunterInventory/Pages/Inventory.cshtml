@@ -1,5 +1,5 @@
 @page
-@model MinecraftInventory.Pages.InventoryModel
+@model MonsterHunterInventory.Pages.InventoryModel
 @{
 
 }
@@ -9,33 +9,3 @@
 </head>
 <h1>Inventory</h1>
 <a asp-page="/Index">Go back Home</a>
-
-@*<p style="padding-left: 20px">@Model.number</p>*@
-
-<div class="row">
-
-    @foreach (var block in Model.allBlocks)
-    {
-
-        <div class="col-3">
-            <div class="card">
-                <div class="card-img-top" src="@block.ImageURL" alt="Card Image Cap"></div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-img-top" src="@block.ImageURL" alt="Card Image Cap"></div>
-                    <h5 class="card-title">@block.Name</h5>
-                    <h6 class="card-title">@block.BlockType</h6>
-                    <p class="card-text">@block.count</p>
-
-                    <form method="post" asp-page-handler="update">
-                        <input class="form-control" name="count" value="@block.Count" type="number" min="0" step="1" />
-                        <input type="hidden" name="name" value="@block.Name" />
-                        <button class="btn btn-outline-primary">Update</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    }
-</div>

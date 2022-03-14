@@ -3,6 +3,10 @@
     height: 100%;
 }
 
+.container {
+    width: 100%;
+}
+
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";

@@ -4,6 +4,13 @@ html, body {
     height: 100%;
 }
 
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .container_btn {
     position: relative;
     background-image: url("./img/button_img.png");
@@ -24,7 +31,7 @@ html, body {
 
 .btn_read_2 {
     position: absolute;
-    left: 30px;
+    left: 20px;
     top: 40px;
     border: none;
     background-color: rgba(0, 0,0,0);

@@ -4,20 +4,20 @@ namespace MonsterHunterInventory.Models
 	public class Inventory
 	{
 
-		public List<Potion> Potions = new List<Potion>();
+		//public List<Potion> Potions = new List<Potion>();
 
 
-		//constructor is going to fetch our database
-		public Inventory()
-		{
+		////constructor is going to fetch our database
+		//public Inventory()
+		//{
 
-			Potions = Database.GetAllPotions();
-		}
+		//	Potions = Database.GetAllPotions();
+		//}
 
-		public void UpdateCount(string name, int count)
-		{
-			Database.UpdatePotionCount(name, count);
+		//public void UpdateCount(string name, int count)
+		//{
+		//	Database.UpdatePotionCount(name, count);
 
-		}
+		//}
 	}
 }
