@@ -1,9 +1,11 @@
 ﻿using System;
+using MonsterHunterInventory.Models;
+
 namespace MonsterHunterInventory.Interfaces
 {
 	public interface Craftable
 	{
 
-		//Potion Craft();
+		Item Craft();
 	}
 }

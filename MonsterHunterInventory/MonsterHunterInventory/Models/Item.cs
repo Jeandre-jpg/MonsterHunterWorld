@@ -3,13 +3,17 @@ namespace MonsterHunterInventory.Models
 {
 
 
- public class Potion
+ public class Item
 {
 
     //Fields
 
     //public int ID { get; set;}
     public int ID { get; set; }
+
+    public string IngredientType { get; set; } = string.Empty;
+
+    public string GroupType { get; set; } = string.Empty;
 
     public string Name { get; set; } = string.Empty;
 
@@ -44,7 +48,7 @@ namespace MonsterHunterInventory.Models
 
     //constructor
 
-    public Potion(int newCount)
+    public Item(int newCount)
     {
         count = newCount;
 
@@ -67,9 +71,14 @@ namespace MonsterHunterInventory.Models
         Console.WriteLine($"{Name} has been added");
     }
 
-    public void destroy()
+        //new Ingredient()
+        //{
+        //    ingredientType = "potion"
+        //}
+
+        public void destroy()
     {
-        Console.WriteLine("Potion Destroyed");
+        Console.WriteLine($"{Name} Destroyed");
         count = 0;
     }
 

@@ -9,3 +9,34 @@
 </head>
 <h1>Inventory</h1>
 <a asp-page="/Index">Go back Home</a>
+
+<div class="row">
+
+    @foreach (var item in Model.allItems)
+    {
+
+        <div class="col-3">
+            <div class="card">
+                <div class="card-img-top" src="@item.ImageURL" alt="Card Image Cap"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-img-top" src="@item.ImageURL" alt="Card Image Cap"></div>
+                    <h5 class="card-title">@item.Name</h5>
+                    <h6 class="card-title">@item.IngredientType</h6>
+                    <h6 class="card-title">@item.GroupType</h6>
+                    <h6 class="card-title">@item.Location</h6>
+                    <h6 class="card-title">@item.Description</h6>
+                    <p class="card-text">@item.count</p>
+
+                    <form method="post" asp-page-handler="update">
+                        <input class="form-control" name="count" value="@item.Count" type="number" min="0" step="1" />
+                        <input type="hidden" name="name" value="@item.Name" />
+                        <button class="btn btn-outline-primary">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    }
+</div>
