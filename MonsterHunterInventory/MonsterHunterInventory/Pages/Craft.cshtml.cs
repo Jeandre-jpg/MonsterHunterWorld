@@ -9,28 +9,28 @@ using MonsterHunterInventory.Models;
 namespace MonsterHunterInventory.Pages
 {
 
-public class CraftModel : PageModel
-{
-
-
-    public List<Product> allProducts = new List<Product>();
-
-    public string Message { get; set; } = string.Empty;
-
-    public void OnGet(string message = "")
+    public class CraftModel : PageModel
     {
 
-            allProducts = new CraftedItems().Products;
 
+        public List<Product> allProducts = new List<Product>();
+
+        public string Message { get; set; } = string.Empty;
+
+        public void OnGet(string message = "")
+        {
+
+            allProducts = new ProductBook().Products;
+
+        }
+
+        public RedirectResult OnPostCraft(string name, int count, List<string> ingredients)
+        {
+            //TODO: Call the model function and pass the name, updated count and ingredients
+            new ProductBook().CraftProduct(name, count + 1, ingredients);
+
+            return Redirect($"./Craft?message={name} has been crafted");
+
+        }
     }
-
-    public void OnPostCraft(string name, int count, List<string> items)
-    {
-        //TODO: Call the model function and pass the name, updated count and ingredients
-        new CraftedItems().CraftProduct(name, count + 1, items);
-
-        return Redirect($"./Crafting?message={name} has been crafted");
-
-    }
-}
 }

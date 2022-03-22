@@ -24,5 +24,23 @@ namespace MonsterHunterInventory.Models
 			Database.UpdateItemCount(name, count);
 
 		}
+
+		//function to check how many items there are
+
+		public int GetCount(string name)
+		{
+			foreach (var item in Items) //searching for specific Item
+			{
+				if (item.Name == name)
+				{
+					return item.Count;
+				}
+
+			}
+			return -1; //because there are no Items with that name
+		}
+
+
 	}
 }
+

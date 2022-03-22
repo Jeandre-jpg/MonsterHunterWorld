@@ -2,8 +2,68 @@
 @model MonsterHunterInventory.Pages.CraftModel
 @{ }
 
-<head>
-    <script href=""></script>
-</head>
-<h1>Craft</h1>
-<a asp-page="/Index">Go back Home</a>
+@{ if (@Model.Message != "")
+    {
+
+        <div class="alert alert-success">@Model.Message</div>
+
+    }
+}
+
+<div class="row">
+
+    @foreach (var product in Model.allProducts)
+    {
+
+        <div class="col-3">
+            <div class="card @(product.IsCraftable() ? "border-success" : "bg-light")">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <span>@product.Name </span>
+                        <span style="float:right;">@product.Count</span>
+                    </h5>
+                    <h6 class="card-title">@product.ProductType</h6>
+                    <p>Ingredients:</p>
+
+                    @foreach (var ingredient in product.Ingredients)
+                    {
+                        if (ingredient != "")
+                        {
+                            <p style="padding:10px; margin:10px; margin-left:20px;">@ingredient</p>
+                        }
+                    }
+
+
+                    @{
+                        if (product.IsCraftable())
+                        {
+                            <form method="post"
+                                  asp-page-handler="craft"
+                                  asp-route-name="@product.Name"
+                                  asp-route-count="@product.Count"
+                                  asp-route-ingredients="@product.Ingredients">
+
+                                @{
+                                    foreach (var ingredient in product.Ingredients)
+                                    {
+                                        <input type="hidden" name="ingredients[]" value="@ingredient" />
+                                    }
+                                }
+
+
+                                <input class="btn btn-dark" type="submit" value="Craft Product" />
+                            </form>
+                        }
+                    }
+
+
+                    @*<form method="post" asp-page-handler="update">
+                            <input class="form-control" name="count" value="@product.Count" type="number" min="0" step="1"/>
+                            <input type="hidden" name="name" value="@product.Name"/>
+                            <button class="btn btn-outline-primary">Update</button>
+                        </form>*@
+                </div>
+            </div>
+        </div>
+    }
+</div>

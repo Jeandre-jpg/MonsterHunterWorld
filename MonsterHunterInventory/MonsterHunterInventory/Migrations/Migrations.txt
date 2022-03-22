@@ -1,0 +1,55 @@
+﻿CREATE TABLE products 
+( 
+ name VARCHAR(50),
+ img VARCHAR(50),
+ producttype VARCHAR(50),
+ description VARCHAR(550),
+ count int,
+ item1  VARCHAR(50),
+ item2  VARCHAR(50),
+ PRIMARY KEY (name)
+);
+
+//End Products
+
+//Pods
+
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Flash Pod','/','Pods','Flash Pods are consumable Slinger ammo Items in Monster Hunter World (MHW). They are used to inflict the Stun effect on a Monster.',1,'Flashbug','Pod')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Screamer Pod','/','Pods','Screamer Pods are consumable Slinger ammo Items in Monster Hunter World (MHW). They are used to disrupt Monsters that burrow underground.',1,'Screamer Sac','Pod')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Dung Pod','/','Pods','Dung Pods are consumable Slinger ammo Items in Monster Hunter World (MHW). They are used to repel Monsters with an unbearable smell.',2,'Rolled Up Dung','Pod')
+
+//Meat
+
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Poisoned Meat','/','Meat','Poisoned Meat is a Pouch Item in Monster Hunter World (MHW). Meat items are made from Raw Meat carved from Monsters and they can be brought along on hunts. Some meat items can be placed on the ground to lure Monsters and set up traps.',2,'Raw Meat','Toadstool')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Tinged Meat','/','Meat','Tinged meat is a Pouch Item in Monster Hunter World (MHW). Meat items are made from Raw Meat carved from Monsters and they can be brought along on hunts. Some meat items can be placed on the ground to lure Monsters and set up traps.',0,'Raw Meat','Parashroom')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Drugged Meat','/','Meat','Drugged Meat is a Pouch Item in Monster Hunter World (MHW). Meat items are made from Raw Meat carved from Monsters and they can be brought along on hunts. Some meat items can be placed on the ground to lure Monsters and set up traps.',1,'Raw Meat','Sleep Herb')
+
+//Traps
+
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Pitfall Trap','/','Traps','DThe Pitfall Trap is a consumable Pouch Item in Monster Hunter World (MHW). It allows a Hunter to incapacitate a Large Monster for a short time, setting it up for Capture or an opportunity to go on the offensive.',4,'Trap Tool','Net')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Shock Trap','/','Traps','The Shock Trap is a consumable Pouch Item in Monster Hunter World (MHW). It allows a Hunter to incapacitate a Large Monster for a short time, setting it up for Capture or an opportunity to go on the offensive.',5,'Trap Tool','Thunderbug')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Net','/','Traps','This material can be obtained by completing Quests, gathering out on the field, or defeating Monsters.',3,'Ivy','Spiderweb')
+
+//Knives
+
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Paralysis Knife','/','Knives','Paralysis Knife is Slinger Ammo in Monster Hunter World (MHW).',3,'Throwing Knife','Parashroom')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Sleep Knife','/','Knives','Sleep Knife is Slinger Ammo in Monster Hunter World (MHW).',3,'Throwing Knife','Sleep Herb');
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Poison Knife','/','Knives','Poison Knife is Slinger Ammo in Monster Hunter World (MHW).',3,'Throwing Knife','Toadstool')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Tranq Knife','/','Knives','Tranq Knife is Slinger Ammo in Monster Hunter World (MHW).',3,'Throwing Knife','Tranq Bomb')
+
+//Bombs
+
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Barrel Bomb','/','Bombs','Barrel Bombs are consumable Pouch Items in Monster Hunter World (MHW). Bomb items can be placed on the ground and triggered by attacks to deal damage..',3,'Small Barrel','Fire Herb')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Bounce Bomb','/','Bombs','Bounce Bombs are consumable Pouch Items in Monster Hunter World (MHW). Bomb items can be placed on the ground and triggered by attacks to deal damage.',1,'Small Barrel','Nitoshroom')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Mega Bounce Bomb','/','Bombs','Mega Bounce Bombs are consumable Pouch Items in Monster Hunter World (MHW). Bomb items can be placed on the ground and triggered by attacks to deal damage.',2,'Bounce Bomb','Nitoshroom')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Large Barrel Bomb','/','Bombs','Large Barrel Bombs are consumable Pouch Items in Monster Hunter World (MHW). Bomb items can be placed on the ground and triggered by attacks to deal damage.',3,'Large Barrel','Gunpowder')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Smoke Bomb','/','Bombs','Smoke Bomb is a consumable Item in Monster Hunter World (MHW). These useful items can be crafted from materials gathered in the field and brought along on hunts.', '0','Smokenut','Ivy')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Poison Smoke Bomb','/','Bombs','Poison Smoke Bomb is an Item in Monster Hunter World (MHW). It allows a Hunter to trigger Poison effects on Monsters.', 1,'Smokenut','Toadstool')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Tranq Bomb','/','Bombs','Tranq Bomb is a consumable Pouch Item in Monster Hunter World (MHW). It allows Hunters to capture a Monster once they have weakened and trapped it.', 2,'Sleep Herb','Parashroom')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Mega Barrel Bomb','/','Bombs','Mega Barrel Bombs are consumable Pouch Items in Monster Hunter World (MHW). Bomb items can be placed on the ground and triggered by attacks to deal damage.', 1,'Large Barrel Bomb','Devils Blight')
+
+//Ammo
+
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Dragon Ammo','/','Ammo','Dragon Ammo is an Ammo type of Item in Monster Hunter World (MHW).', 1,'Normal Ammo 1','Dragonfell Berry')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Poison Ammo','/','Ammo','Poison Ammo is an Ammo type in Monster Hunter World (MHW); it comes in two levels.', 1,'Normal Ammo 1','Toadstool')
+INSERT INTO `products`(`name`, `img`, `producttype`, `description`, `count`, `item1`, `item2`) VALUES ('Paralysis Ammo','/','Ammo','Paralysis Ammo is an Ammo type in Monster Hunter World (MHW); it comes in two levels.', 2,'Normal Ammo 1','Parashroom')

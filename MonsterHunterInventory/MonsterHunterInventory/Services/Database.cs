@@ -21,7 +21,7 @@ namespace MonsterHunterInventory.Services
 		}
 
 		//Get all of items
-		public static List<Item> GetAllItems()
+		public static List<Item>GetAllItems()
 		{
 			//Create and open our db collection
 			using var con = new MySqlConnection(serverConfiguration);
@@ -39,15 +39,14 @@ namespace MonsterHunterInventory.Services
 
 			while (reader.Read())
 			{
-                var item = new Item(reader.GetInt32(5))
+				var item = new Item(reader.GetInt32(5))
 				{
-					IngredientType = reader.GetString(0),
-					GroupType = reader.GetString(1),
-					Name = reader.GetString(2),
-					Location = reader.GetString(3),
-					ImageURL = reader.GetString(4),
-					Description = reader.GetString(6),
-					
+					Name = reader.GetString(0),
+					Location = reader.GetString(1),
+					ImageURL = reader.GetString(2),
+					ItemType = reader.GetString(3),
+					Description = reader.GetString(4),
+					GroupType = reader.GetString(6),
 				};
 
 				results.Add(item);
@@ -58,22 +57,25 @@ namespace MonsterHunterInventory.Services
 
 		public static void UpdateItemCount(string name, int newCount)
 		{
-
+			//establish connection to db
 			using var con = new MySqlConnection(serverConfiguration);
 			con.Open();
 
+			//sql query
 			string sql = $"UPDATE `items` SET `count` = @count WHERE `name` = @name";
 			using var cmd = new MySqlCommand(sql, con);
 
+			//adding the actual values by replacing the @ placeholders
 			cmd.Parameters.AddWithValue("@name", name);
 			cmd.Parameters.AddWithValue("@count", newCount);
 
+			//prepare command
 			cmd.Prepare();
+			//exucute command
 			cmd.ExecuteNonQuery();
 		}
 
-
-		//Get all of recipes
+		//Get all of products
 		public static List<Product> GetAllProducts()
 		{
 			//Create and open our db collection
@@ -92,26 +94,23 @@ namespace MonsterHunterInventory.Services
 
 			while (reader.Read())
 			{
-				var recipe = new Product(reader.GetInt32(2))
+				var product = new Product(reader.GetInt32(4))
 				{
-					Name = reader.GetString(0), //0 = index of our colum number
-					RecipeType = reader.GetString(1),
+					Name = reader.GetString(0),
+					ImageURL = reader.GetString(1),
+					ProductType = reader.GetString(2),
+					Description = reader.GetString(3)
+
 				};
 
 				var ingredients = new List<string>();
 
-				ingredients.Add(reader.GetString(3)); //Ingredient 1
-				ingredients.Add(reader.GetString(4)); //Ingredient 2
-				ingredients.Add(reader.GetString(5)); //Ingredient 4
-				ingredients.Add(reader.GetString(6)); //Ingredient 5
-				ingredients.Add(reader.GetString(7)); //Ingredient 6
-				ingredients.Add(reader.GetString(8)); //Ingredient 7
-				ingredients.Add(reader.GetString(9)); //Ingredient 8
-				ingredients.Add(reader.GetString(10)); //Ingredient 9
+				ingredients.Add(reader.GetString(5)); //Ingredient 1
+				ingredients.Add(reader.GetString(6)); //Ingredient 2
+				
+				product.Ingredients = ingredients;
 
-				recipe.Ingredients = ingredients;
-
-				results.Add(recipe);
+				results.Add(product);
 			}
 
 			return results;
@@ -120,7 +119,7 @@ namespace MonsterHunterInventory.Services
 		public static void CraftProduct(string nameId, int newCount, List<string> ingredients)
 		{
 
-			UpdateBlockCountAfterCraft(ingredients);
+			UpdateItemCountAfterCraft(ingredients);
 
 			//establish connection to db
 			using var con = new MySqlConnection(serverConfiguration);
@@ -155,10 +154,10 @@ namespace MonsterHunterInventory.Services
 
 				if (ingredient != "")
 				{
-					int currentCount = GetCountOfBlock(ingredient);
+					int currentCount = GetCountOfItem(ingredient);
 
 					//sql query
-					string sql = $"UPDATE `blocks` SET `count` = @count WHERE `name` = @name";
+					string sql = $"UPDATE `items` SET `count` = @count WHERE `name` = @name";
 					using var cmd = new MySqlCommand(sql, con);
 
 					//adding the actual values by replacing the @ placeholders
@@ -173,7 +172,7 @@ namespace MonsterHunterInventory.Services
 			}
 		}
 
-		public static int GetCountOfBlock(string name)
+		public static int GetCountOfItem(string name)
 		{
 
 			//establish connection to db
@@ -181,7 +180,7 @@ namespace MonsterHunterInventory.Services
 			con.Open();
 
 			//setup our query
-			string sql = "SELECT count FROM blocks WHERE name = @name";
+			string sql = "SELECT count FROM items WHERE name = @name";
 			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
 
 			cmd.Parameters.AddWithValue("@name", name);
@@ -211,6 +210,5 @@ namespace MonsterHunterInventory.Services
 	}
 
 }
-
 
 

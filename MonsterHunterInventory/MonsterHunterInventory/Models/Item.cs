@@ -3,15 +3,16 @@ namespace MonsterHunterInventory.Models
 {
 
 
- public class Item
+public class Item
 {
 
     //Fields
 
     //public int ID { get; set;}
+
     public int ID { get; set; }
 
-    public string IngredientType { get; set; } = string.Empty;
+    public string ItemType { get; set; } = string.Empty;
 
     public string GroupType { get; set; } = string.Empty;
 
@@ -54,31 +55,15 @@ namespace MonsterHunterInventory.Models
 
     }
 
-    internal void Craft()
-    {
-        throw new NotImplementedException();
-    }
-
-    //internal object Craft()
-    //{
-    //    throw new NotImplementedException();
-    //}
-
-
 
     public virtual void place()
     {
-        Console.WriteLine($"{Name} has been added");
+        Console.WriteLine($"{Name} has been placed");
     }
 
-        //new Ingredient()
-        //{
-        //    ingredientType = "potion"
-        //}
-
-        public void destroy()
+    public void destroy()
     {
-        Console.WriteLine($"{Name} Destroyed");
+        Console.WriteLine("Item Destroyed");
         count = 0;
     }
 

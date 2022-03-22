@@ -4,26 +4,26 @@ using MonsterHunterInventory.Services;
 
 namespace MonsterHunterInventory.Models
 {
-	public class CraftedItems
+	public class ProductBook
 	{
-		//Finished Crafted Products variable that we can call from frontend
+		//Recipes variable that we can call from frontend
 		public List<Product> Products = new List<Product>();
 
 		//Constructor
-		public CraftedItems()
-        {
+		public ProductBook()
+		{
 
 			//TODO: Call Database
 			Products = Database.GetAllProducts();
-        }
+		}
 
 
-		public void CraftProduct(string name, int count, List<string> items)
+		public void CraftProduct(string name, int count, List<string> ingredients)
 		{
 
 			//TODO: Call Database
 
-			Database.CraftProduct(name, count, items);
+			Database.CraftProduct(name, count, ingredients);
 		}
 	}
 }
