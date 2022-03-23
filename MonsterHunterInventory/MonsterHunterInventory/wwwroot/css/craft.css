@@ -1,0 +1,25 @@
+﻿@import url('https://fonts.googleapis.com/css?family=Fira+Sans:400');
+
+
+body {
+    background: #122126;
+    color: black;
+    font-family: 'Fira Sans';
+    text-align: left;
+}
+
+.card {
+    margin: 0;
+    padding: 75px;
+    color: black;
+    font-family: 'Fira Sans';
+    text-align: left;
+    width: 100%;
+    height: auto;
+    background-color: black;
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-image: url(/img/card_main.png);
+}

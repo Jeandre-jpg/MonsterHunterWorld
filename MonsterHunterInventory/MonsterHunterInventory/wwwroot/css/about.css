@@ -1,5 +1,5 @@
 ﻿/*=== MEDIA QUERY ===*/
-@import url("https://fonts.googleapis.com/css?family=Muli:300,400,600,700,800,900");
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 
 html, body {
     width: 100%;
@@ -8,18 +8,18 @@ html, body {
 
 body {
     line-height: 1.5;
-    font-family: "Muli", sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 p, li, input, select, button {
-    font-family: "Muli", sans-serif;
+    font-family: "Montserrat", sans-serif;
     color: #666;
     font-size: 14px;
     font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: "Muli", sans-serif;
+    font-family: "Montserrat", sans-serif;
     font-weight: 600;
     color: white;
 }
