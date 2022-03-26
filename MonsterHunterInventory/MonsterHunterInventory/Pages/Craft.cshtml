@@ -29,8 +29,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,300;0,500;0,600;0,700;1,300;1,500;1,600;1,700&amp;display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&amp;display=swap" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/index.css" rel="stylesheet" />
     <link href="css/craft.css" rel="stylesheet" />
-
 </head>
 <body class="container-fluid" style="text-align: left;">
 
@@ -40,8 +40,10 @@
         {
 
             <div class="col-3">
-                <div class="card @(product.IsCraftable() ? "border-success" : "bg-light")">
+                <div class="card @(product.IsCraftable() ? "border-success" : "bg-blsck")">
+                    <img class="card-img-top" src="@product.ImageURL" alt="Card Image Cap">
                     <div class="card-body">
+                        <div class="card-img-top" src="@product.ImageURL" alt="Card Image Cap"></div>
                         <h5 class="card-title">
                             <span>@product.Name </span>
                             <span style="float:right;">@product.Count</span>
@@ -82,10 +84,10 @@
 
 
                         @*<form method="post" asp-page-handler="update">
-                                <input class="form-control" name="count" value="@product.Count" type="number" min="0" step="1"/>
-                                <input type="hidden" name="name" value="@product.Name"/>
-                                <button class="btn btn-outline-primary">Update</button>
-                            </form>*@
+                <input class="form-control" name="count" value="@product.Count" type="number" min="0" step="1"/>
+                <input type="hidden" name="name" value="@product.Name"/>
+                <button class="btn btn-outline-primary">Update</button>
+            </form>*@
                     </div>
                 </div>
             </div>

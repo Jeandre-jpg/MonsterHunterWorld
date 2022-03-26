@@ -39,14 +39,13 @@ namespace MonsterHunterInventory.Services
 
 			while (reader.Read())
 			{
-				var item = new Item(reader.GetInt32(5))
+				var item = new Item(reader.GetInt32(4))
 				{
 					Name = reader.GetString(0),
-					Location = reader.GetString(1),
-					ImageURL = reader.GetString(2),
-					ItemType = reader.GetString(3),
-					Description = reader.GetString(4),
-					GroupType = reader.GetString(6),
+					ImageURL = reader.GetString(1),
+					ItemType = reader.GetString(2),
+					Description = reader.GetString(3),
+					GroupType = reader.GetString(4),
 				};
 
 				results.Add(item);
