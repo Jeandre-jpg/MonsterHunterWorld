@@ -36,6 +36,8 @@
 
     <div class="row">
 
+
+
         @foreach (var product in Model.allProducts)
         {
 
@@ -84,14 +86,16 @@
 
 
                         @*<form method="post" asp-page-handler="update">
-                <input class="form-control" name="count" value="@product.Count" type="number" min="0" step="1"/>
-                <input type="hidden" name="name" value="@product.Name"/>
-                <button class="btn btn-outline-primary">Update</button>
-            </form>*@
+                                <input class="form-control" name="count" value="@product.Count" type="number" min="0" step="1"/>
+                                <input type="hidden" name="name" value="@product.Name"/>
+                                <button class="btn btn-outline-primary">Update</button>
+                            </form>*@
                     </div>
                 </div>
             </div>
         }
+
+
     </div>
-    </body>
+</body>
 </html>

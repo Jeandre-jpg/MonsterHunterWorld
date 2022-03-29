@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using MonsterHunterInventory.Models;
 using MySql.Data.MySqlClient;
 
@@ -42,10 +43,13 @@ namespace MonsterHunterInventory.Services
 				var item = new Item(reader.GetInt32(4))
 				{
 					Name = reader.GetString(0),
-					ImageURL = reader.GetString(1),
-					ItemType = reader.GetString(2),
+					ItemType = reader.GetString(1),
+					ImageURL = reader.GetString(2),
 					Description = reader.GetString(3),
-					GroupType = reader.GetString(4),
+					GroupType = reader.GetString(5),
+					PouchCount = reader.GetInt32(6),
+					HomebaseCount = reader.GetInt32(7),
+					BunkerCount = reader.GetInt32(8)
 				};
 
 				results.Add(item);
@@ -205,6 +209,29 @@ namespace MonsterHunterInventory.Services
 			return count;
 
 		}
+
+		//protected void btnCourtSearch_Click(object sender, EventArgs e)
+		//{
+		//	string query = string.Format("SELECT * FROM items WHERE id = 1 AND img = {0}");
+		//	BindGridView(query);
+		//}
+		//public void BindGridView(string query)
+		//{
+		//	string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+		//	using (MySqlConnection con = new MySqlConnection(constr))
+		//	{
+		//		using (MySqlDataAdapter sda = new MySqlDataAdapter(query, con))
+		//		{
+		//			using (DataTable dt = new DataTable())
+		//			{
+		//				sda.Fill(dt);
+		//				GridView1.DataSource = dt;
+		//				GridView1.DataBind();
+		//			}
+		//		}
+		//	}
+		//}
+
 
 	}
 

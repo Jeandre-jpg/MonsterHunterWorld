@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using MonsterHunterInventory.Services;
 
 namespace MonsterHunterInventory.Models
@@ -39,6 +40,7 @@ namespace MonsterHunterInventory.Models
 			}
 			return -1; //because there are no Items with that name
 		}
+
 
 
 	}

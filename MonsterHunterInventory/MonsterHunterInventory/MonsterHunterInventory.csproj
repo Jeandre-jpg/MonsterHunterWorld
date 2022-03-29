@@ -24,8 +24,10 @@
     <Folder Include="Interfaces\" />
     <Folder Include="Services\" />
     <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\img\database\" />
   </ItemGroup>
   <ItemGroup>
     <Content Remove="wwwroot\img\" />
+    <Content Remove="wwwroot\img\database\" />
   </ItemGroup>
 </Project>
