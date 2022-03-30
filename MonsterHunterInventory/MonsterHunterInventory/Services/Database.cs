@@ -10,8 +10,9 @@ namespace MonsterHunterInventory.Services
 	{
 		//configuration to connect to our localhost database
 		private static string serverConfiguration = @"server=localhost;userid=root;password=root;database=monsterhunter;port=8889;";
+      
 
-		public static string GetVersion()
+        public static string GetVersion()
 		{
 			//Creating a new connection to dtabase using our config and NuGet package
 			using var con = new MySqlConnection(serverConfiguration);
@@ -21,8 +22,13 @@ namespace MonsterHunterInventory.Services
 			return con.ServerVersion;
 		}
 
-		//Get all of items
-		public static List<Item>GetAllItems()
+        internal static void UpdatePlaceCount(string name, int count)
+        {
+            throw new NotImplementedException();
+        }
+
+        //Get all of items
+        public static List<Item>GetAllItems()
 		{
 			//Create and open our db collection
 			using var con = new MySqlConnection(serverConfiguration);
@@ -57,6 +63,40 @@ namespace MonsterHunterInventory.Services
 
 			return results;
 		}
+
+		public static int GetLocationInfo(string name)
+		{
+			using var con = new MySqlConnection(serverConfiguration);
+			con.Open();
+
+			//setup our query
+			string sql = "SELECT homebasecount FROM items WHERE homebasecount > 0";
+			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
+
+			cmd.Parameters.AddWithValue("@name", name);
+
+			//Creates an instance of our cmd result that can be read in C#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			int homebasecount = 0;
+
+			//adding the actual values by replacing the @ placeholders
+
+
+			while (reader.Read())
+			{
+				homebasecount = reader.GetInt32(0);
+
+			}
+
+			con.Close();
+
+
+
+			return homebasecount;
+
+		}
+
 
 		public static void UpdateItemCount(string name, int newCount)
 		{
@@ -210,29 +250,139 @@ namespace MonsterHunterInventory.Services
 
 		}
 
-		//protected void btnCourtSearch_Click(object sender, EventArgs e)
+
+
+		//protected void btnItem(object sender, EventArgs e)
 		//{
-		//	string query = string.Format("SELECT * FROM items WHERE id = 1 AND img = {0}");
-		//	BindGridView(query);
+		//    string query = string.Format("SELECT * FROM items WHERE id = 1 AND img = {0}");
+		//    BindGridView(query);
 		//}
 		//public void BindGridView(string query)
 		//{
-		//	string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
-		//	using (MySqlConnection con = new MySqlConnection(constr))
+		//    string constr = ConfigurationManager.ConnectionStrings["constr"].ConnectionString;
+		//    using (MySqlConnection con = new MySqlConnection(constr))
+		//    {
+		//        using (MySqlDataAdapter sda = new MySqlDataAdapter(query, con))
+		//        {
+		//            using (DataTable dt = new DataTable())
+		//            {
+		//                sda.Fill(dt);
+		//                GridView1.DataSource = dt;
+		//                GridView1.DataBind();
+		//            }
+		//        }
+		//    }
+		//}
+
+		//public static int GetHomebaseOfItem(string name)
+		//{
+
+		//	//establish connection to db
+		//	using var con = new MySqlConnection(serverConfiguration);
+		//	con.Open();
+
+		//	//setup our query
+		//	string sql = "SELECT homebase FROM items WHERE name = @name";
+		//	using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
+
+		//	cmd.Parameters.AddWithValue("@name", name);
+
+		//	//Creates an instance of our cmd result that can be read in C#
+		//	using MySqlDataReader reader = cmd.ExecuteReader();
+
+		//	int homebase = 0;
+
+		//	//adding the actual values by replacing the @ placeholders
+
+
+		//	while (reader.Read())
 		//	{
-		//		using (MySqlDataAdapter sda = new MySqlDataAdapter(query, con))
-		//		{
-		//			using (DataTable dt = new DataTable())
-		//			{
-		//				sda.Fill(dt);
-		//				GridView1.DataSource = dt;
-		//				GridView1.DataBind();
-		//			}
-		//		}
+		//		homebase = reader.GetInt32(7);
+
 		//	}
+
+		//	con.Close();
+
+
+
+		//	return homebase;
+
 		//}
 
 
+
+		
+
+		//	public static List<ItemType> GetAllArtificial()
+		//{
+		//	//Create and open our db collection
+		//	using var con = new MySqlConnection(serverConfiguration);
+		//	con.Open();
+
+		//	//setup our query
+		//	string sql = "SELECT * FROM items WHERE itemtype = `Artificial`";
+		//	using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in 
+
+		//	//Creates an instance of our cmd result that can be read in C#
+		//	using MySqlDataReader reader = cmd.ExecuteReader();
+
+		//	//init our return list
+		//	var results = new List<Item>();
+
+		//	while (reader.Read())
+		//	{
+		//		var product = new Item(reader.GetInt32(4))
+		//		{
+		//			Name = reader.GetString(0),
+		//			ImageURL = reader.GetString(1),
+		//			ProductType = reader.GetString(2),
+		//			Description = reader.GetString(3)
+
+		//		};
+
+		//		var ingredients = new List<string>();
+
+		//		ingredients.Add(reader.GetString(5)); //Ingredient 1
+		//		ingredients.Add(reader.GetString(6)); //Ingredient 2
+
+		//		product.Ingredients = ingredients;
+
+		//		results.Add(product);
+		//	}
+
+		//	return results;
+		//}
+
+
+
+
+
+		//Get all of products
+		//public static List<Item> GetAllHomebase(string name)
+		//{
+
+		//	//establish connection to db
+		//	using var con = new MySqlConnection(serverConfiguration);
+		//	con.Open();
+
+		//	//setup our query
+		//	string sql = "SELECT COUNT (homebasecount) FROM items WHERE homebasecount > 0; ";
+		//	using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
+
+		//	cmd.Parameters.AddWithValue("@homebasecount", name);
+
+		//	//Creates an instance of our cmd result that can be read in C#
+		//	using MySqlDataReader reader = cmd.ExecuteReader();
+
+
+
+		//	con.Close();
+
+
+
+		//	return homebasecount;
+
+		//}
 	}
 
 }

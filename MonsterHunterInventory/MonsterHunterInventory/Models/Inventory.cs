@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System.Collections.Generic;
 using MonsterHunterInventory.Services;
 
 namespace MonsterHunterInventory.Models
 {
-	public class Inventory
+    public class Inventory
 
 
 	{
@@ -18,6 +16,7 @@ namespace MonsterHunterInventory.Models
 		{
 
 			Items = Database.GetAllItems();
+			
 		}
 
 		public void UpdateCount(string name, int count)
@@ -25,6 +24,21 @@ namespace MonsterHunterInventory.Models
 			Database.UpdateItemCount(name, count);
 
 		}
+
+
+		
+		//public int GetHomebaseOfItem(string name)
+		//{
+		//	foreach (var homebasecount in Items) //searching for specific Item
+		//	{
+		//		if (homebasecount.Name == name)
+		//		{
+		//			return homebasecount.Count;
+		//		}
+
+		//	}
+		//	return -1; //because there are no Items with that name
+		//}
 
 		//function to check how many items there are
 

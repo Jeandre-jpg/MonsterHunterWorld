@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using MonsterHunterInventory.Interfaces;
 
 namespace MonsterHunterInventory.Models
 {
 
-public class Product : Craftable
+    public class Product : Craftable
 {
 	//recipe constructor to see count
 	public Product(int newCount)

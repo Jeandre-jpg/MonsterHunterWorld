@@ -8,8 +8,6 @@ public class Item
 
     //Fields
 
-    //public int ID { get; set;}
-
     public int ID { get; set; }
 
     public string ItemType { get; set; } = string.Empty;
@@ -24,18 +22,19 @@ public class Item
 
     public string Description { get; set; } = string.Empty;
 
-    public int PouchCount { get; set; }
-
     public int HomebaseCount { get; set; }
 
     public int BunkerCount { get; set; }
 
+    public int PouchCount { get; set; }
 
 
+
+        
         public int count;
 
 
-    public int Count
+        public int Count
     {
         get
         {
@@ -55,13 +54,22 @@ public class Item
         }
     }
 
-    //constructor
 
-    public Item(int newCount)
+       
+
+
+
+
+
+//constructor
+
+public Item(int newCount)
     {
         count = newCount;
 
     }
+
+
 
 
     public virtual void place()
@@ -81,7 +89,6 @@ public class Item
     }
 
 
-
-
-}
+        
+    }
 }

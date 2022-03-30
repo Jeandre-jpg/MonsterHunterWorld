@@ -335,29 +335,88 @@
 
         <div class="col-2 offset-1">
 
-            @foreach (var item in Model.allItems)
-            {
 
 
-                <div class="card" style="width: 50px;">
-                    <div class="card-img-top" src="@item.ImageURL" alt="Card Image Cap"></div>
-                </div>
+            <div class="container-1 container-fluid">
 
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-img-top" src="@item.ImageURL" alt="Card Image Cap"></div>
-                        <h5 class="card-title">@item.Name</h5>
-                        <h6 class="card-title">@item.ItemType</h6>
-                        <h6 class="card-title">@item.GroupType</h6>
-                        <p class="card-text">@item.count</p>
+                @foreach (var homebasecount in Model.allItems)
+                {
 
+
+                    <div class="card" style="width: 50px;">
+                        <div class="card-img-top" src="@homebasecount.ImageURL" alt="Card Image Cap"></div>
                     </div>
-                </div>
 
-            }
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-img-top" src="@homebasecount.ImageURL" alt="Card Image Cap"></div>
+                            <h5 class="card-title">@homebasecount.Name</h5>
+                            <h6 class="card-title">@homebasecount.ItemType</h6>
+                            <h6 class="card-title">@homebasecount.GroupType</h6>
+                            <p class="card-text">@homebasecount.count</p>
 
-        </div>
+                        </div>
+                    </div>
+
+                }
+
             </div>
+
+
+            <div class="container-2 container-fluid">
+
+                @foreach (var item in Model.allItems)
+                {
+
+
+                    <div class="card" style="width: 50px;">
+                        <div class="card-img-top" src="@item.ImageURL" alt="Card Image Cap"></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-img-top" src="@item.ImageURL" alt="Card Image Cap"></div>
+                            <h5 class="card-title">@item.Name</h5>
+                            <h6 class="card-title">@item.ItemType</h6>
+                            <h6 class="card-title">@item.GroupType</h6>
+                            <p class="card-text">@item.count</p>
+
+                            <input type="text" class="textBoxHome defaultTextBox" />
+
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+
+
+            <div class="container-3 container-fluid">
+
+                @foreach (var homebasecount in Model.allItems)
+                {
+
+
+                    <div class="card" style="width: 50px;">
+                        <div class="card-img-top" src="@homebasecount.ImageURL" alt="Card Image Cap"></div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-img-top" src="@homebasecount.ImageURL" alt="Card Image Cap"></div>
+                            <h5 class="card-title">@homebasecount.Name</h5>
+                            <h6 class="card-title">@homebasecount.ItemType</h6>
+                            <h6 class="card-title">@homebasecount.GroupType</h6>
+                            <p class="card-text">@homebasecount.count</p>
+
+                        </div>
+                    </div>
+
+                }
+
+            </div>
+        </div>
+        </div>
    
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
