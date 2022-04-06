@@ -64,39 +64,6 @@ namespace MonsterHunterInventory.Services
 			return results;
 		}
 
-		public static int GetLocationInfo(string name)
-		{
-			using var con = new MySqlConnection(serverConfiguration);
-			con.Open();
-
-			//setup our query
-			string sql = "SELECT homebasecount FROM items WHERE homebasecount > 0";
-			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
-
-			cmd.Parameters.AddWithValue("@name", name);
-
-			//Creates an instance of our cmd result that can be read in C#
-			using MySqlDataReader reader = cmd.ExecuteReader();
-
-			int homebasecount = 0;
-
-			//adding the actual values by replacing the @ placeholders
-
-
-			while (reader.Read())
-			{
-				homebasecount = reader.GetInt32(0);
-
-			}
-
-			con.Close();
-
-
-
-			return homebasecount;
-
-		}
-
 
 		public static void UpdateItemCount(string name, int newCount)
 		{
@@ -117,6 +84,72 @@ namespace MonsterHunterInventory.Services
 			//exucute command
 			cmd.ExecuteNonQuery();
 		}
+
+
+		public static void UpdateHomebaseCount(string name, int newCount)
+		{
+			//establish connection to db
+			using var con = new MySqlConnection(serverConfiguration);
+			con.Open();
+
+			//sql query
+			string sql = $"UPDATE `items` SET `homebasecount` = @count WHERE `name` = @name";
+			using var cmd = new MySqlCommand(sql, con);
+
+			//adding the actual values by replacing the @ placeholders
+			cmd.Parameters.AddWithValue("@name", name);
+			cmd.Parameters.AddWithValue("@count", newCount);
+
+			//prepare command
+			cmd.Prepare();
+			//exucute command
+			cmd.ExecuteNonQuery();
+		}
+
+
+		public static void UpdateBunkerCount(string name, int newCount)
+		{
+			//establish connection to db
+			using var con = new MySqlConnection(serverConfiguration);
+			con.Open();
+
+			//sql query
+			string sql = $"UPDATE `items` SET `bunkercount` = @count WHERE `name` = @name";
+			using var cmd = new MySqlCommand(sql, con);
+
+			//adding the actual values by replacing the @ placeholders
+			cmd.Parameters.AddWithValue("@name", name);
+			cmd.Parameters.AddWithValue("@count", newCount);
+
+			//prepare command
+			cmd.Prepare();
+			//exucute command
+			cmd.ExecuteNonQuery();
+		}
+
+
+
+		public static void UpdatePouchCount(string name, int newCount)
+		{
+			//establish connection to db
+			using var con = new MySqlConnection(serverConfiguration);
+			con.Open();
+
+			//sql query
+			string sql = $"UPDATE `items` SET `pouchcount` = @count WHERE `name` = @name";
+			using var cmd = new MySqlCommand(sql, con);
+
+			//adding the actual values by replacing the @ placeholders
+			cmd.Parameters.AddWithValue("@name", name);
+			cmd.Parameters.AddWithValue("@count", newCount);
+
+			//prepare command
+			cmd.Prepare();
+			//exucute command
+			cmd.ExecuteNonQuery();
+		}
+
+
 
 		//Get all of products
 		public static List<Product> GetAllProducts()
@@ -251,6 +284,107 @@ namespace MonsterHunterInventory.Services
 		}
 
 
+		public static int GetAllHomeBaseItems(string name)
+		{
+
+			//establish connection to db
+			using var con = new MySqlConnection(serverConfiguration);
+			con.Open();
+
+			//setup our query
+			string sql = "SELECT * FROM items WHERE homebasecount > 0;";
+			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
+
+			cmd.Parameters.AddWithValue("@name", name);
+
+			//Creates an instance of our cmd result that can be read in C#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			int homebasecount = 0;
+
+			while (reader.Read())
+			{
+				homebasecount = reader.GetInt32(7);
+
+			}
+
+			con.Close();
+
+
+
+			return homebasecount;
+
+		}
+
+
+		public static int GetAllPouchItems(string name)
+		{
+
+			//establish connection to db
+			using var con = new MySqlConnection(serverConfiguration);
+			con.Open();
+
+			//setup our query
+			string sql = "SELECT * FROM items WHERE pouchcount > 0;";
+			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
+
+			cmd.Parameters.AddWithValue("@name", name);
+
+			//Creates an instance of our cmd result that can be read in C#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			int pouchcount = 0;
+
+			while (reader.Read())
+			{
+				pouchcount = reader.GetInt32(6);
+
+			}
+
+			con.Close();
+
+
+
+			return pouchcount;
+
+		}
+
+
+		
+
+		public static int GetAllBunkerItems(string name)
+		{
+
+			//establish connection to db
+			using var con = new MySqlConnection(serverConfiguration);
+			con.Open();
+
+			//setup our query
+			string sql = "SELECT * FROM items WHERE bunkercount > 0;";
+			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
+
+			cmd.Parameters.AddWithValue("@name", name);
+
+			//Creates an instance of our cmd result that can be read in C#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			int bunkercount = 0;
+
+			while (reader.Read())
+			{
+				bunkercount = reader.GetInt32(8);
+
+			}
+
+			con.Close();
+
+
+
+			return bunkercount;
+
+		}
+
+
 
 		//protected void btnItem(object sender, EventArgs e)
 		//{
@@ -311,7 +445,7 @@ namespace MonsterHunterInventory.Services
 
 
 
-		
+
 
 		//	public static List<ItemType> GetAllArtificial()
 		//{

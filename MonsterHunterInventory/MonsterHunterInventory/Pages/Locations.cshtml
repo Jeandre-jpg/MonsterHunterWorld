@@ -256,7 +256,7 @@
                         Vine Trap (sector 4, 8, 15)
                         Pouch Trivia
                         First Wyverian statistics: Sector 7 is the most deadly with 49% of hunters dying here.
-                        
+
 
                     </p>
                 </div>
@@ -331,125 +331,90 @@
                     </p>
                 </div>
             </div>
-            </div>
+        </div>
 
         <div class="col-2 offset-1">
 
 
 
-            <div class="container-1 container-fluid">
+            @foreach (var item in Model.allItems)
+            {
 
-                @foreach (var homebasecount in Model.allItems)
+         
+                @if (item.HomebaseCount != 0 && item.PouchCount != 0 && item.BunkerCount != 0)
                 {
-
-
-                    <div class="card" style="width: 50px;">
-                        <div class="card-img-top" src="@homebasecount.ImageURL" alt="Card Image Cap"></div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-img-top" src="@homebasecount.ImageURL" alt="Card Image Cap"></div>
-                            <h5 class="card-title">@homebasecount.Name</h5>
-                            <h6 class="card-title">@homebasecount.ItemType</h6>
-                            <h6 class="card-title">@homebasecount.GroupType</h6>
-                            <p class="card-text">@homebasecount.count</p>
-
+                    <div class="container" style=" position: relative;">
+                        <div class="card" style="position: relative; background: #232323; border-radius: 20px; width: 100%; height: 350px;">
+                          
+                            <div class="contentBx" style=" position: absolute; bottom: 0; width: 100%; text-align: center; transition: 1s; z-index: 10;">
+                                <h5 class="card-title" style=" position: relative; font-weight: 600; letter-spacing: 1px; color: #fff; margin: 0;">@item.Name</h5>
+                                <div class="size">
+                                    <h3 style="color: #fff; font-weight: 300; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-right: 10px;">Information :</h3>
+                                    <h6 class="card-title" style="color: #fff; font-weight: 300; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-right: 10px;">@item.ItemType</h6>
+                                    <h6 class="card-title" style="color: #fff; font-weight: 300; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-right: 10px;">@item.GroupType</h6>
+                                </div>
+                                <div class="color">
+                                    <h3 style="color: #fff;">Count :</h3>
+                                    <p class="homebase" style="color: #fff;">@item.HomebaseCount</p>
+                                    <p class="pouch" style="color: #fff;">@item.PouchCount</p>
+                                    <p class="bunker" style="color: #fff;">@item.BunkerCount</p>
+                                </div>
+                                <input style="color: #fff; font-weight: 300; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-right: 10px;" type="text" class="textBoxHome defaultTextBox" />
+                            </div>
                         </div>
                     </div>
-
                 }
 
-            </div>
 
+            }
 
-            <div class="container-2 container-fluid">
-
-                @foreach (var item in Model.allItems)
-                {
-
-
-                    <div class="card" style="width: 50px;">
-                        <div class="card-img-top" src="@item.ImageURL" alt="Card Image Cap"></div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-img-top" src="@item.ImageURL" alt="Card Image Cap"></div>
-                            <h5 class="card-title">@item.Name</h5>
-                            <h6 class="card-title">@item.ItemType</h6>
-                            <h6 class="card-title">@item.GroupType</h6>
-                            <p class="card-text">@item.count</p>
-
-                            <input type="text" class="textBoxHome defaultTextBox" />
-
-                        </div>
-                    </div>
-
-                }
-
-            </div>
-
-
-            <div class="container-3 container-fluid">
-
-                @foreach (var homebasecount in Model.allItems)
-                {
-
-
-                    <div class="card" style="width: 50px;">
-                        <div class="card-img-top" src="@homebasecount.ImageURL" alt="Card Image Cap"></div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-img-top" src="@homebasecount.ImageURL" alt="Card Image Cap"></div>
-                            <h5 class="card-title">@homebasecount.Name</h5>
-                            <h6 class="card-title">@homebasecount.ItemType</h6>
-                            <h6 class="card-title">@homebasecount.GroupType</h6>
-                            <p class="card-text">@homebasecount.count</p>
-
-                        </div>
-                    </div>
-
-                }
-
-            </div>
         </div>
-        </div>
-   
+
+
+
+    </div>
+
+
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
 
-    <!-- Template Javascript -->
     <script src="js/site.js"></script>
 
-    <script>
-        $(function () {
+    <script>$(function () {
             $('.container-2').hide();
-            $('.container-3').hide();
-
-            $("#homebase").add("#bunker").add("#pouch").click(function () {
-                $('.container-2').fadeTo(500, 1);
-                $('.container-1').hide();
-                $('.container-3').hide();
-            });
+    $('.container-3').hide();
+    $('.pouch').hide();
+    $('.bunker').hide();
 
             $("#homebase").click(function () {
                 $('.container-1').fadeTo(500, 1);
                 $('.container-2').hide();
                 $('.container-3').hide();
+                $('.pouch').hide();
+                $('.bunker').hide();
+                $('.homebase').show();
             });
 
-            $("#bunker").click(function () {
+    $("#pouch").click(function () {
+                $('.container-2').fadeTo(500, 1);
+                $('.container-1').hide();
+                $('.container-3').hide();
+                $('.pouch').show();
+                $('.bunker').hide();
+                $('.homebase').hide();
+            });
+
+    $("#bunker").click(function () {
                 $('.container-3').fadeTo(500, 1);
                 $('.container-2').hide();
                 $('.container-1').hide();
+                $('.pouch').hide();
+                $('.bunker').show();
+                $('.homebase').hide();
             });
-        });
-
+});
     </script>
 
 </body>

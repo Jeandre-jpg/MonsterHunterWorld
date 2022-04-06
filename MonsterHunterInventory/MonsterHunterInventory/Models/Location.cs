@@ -8,16 +8,15 @@ namespace MonsterHunterInventory.Models
 
 
 	{
+        public List<Item> allItems = new List<Item>();
 
-        //public List<Location> Locations = new List<Location>();
+        public void OnGet()
+        {
+            //Creating instance of Inventory class for the blocks
+            allItems = new Inventory().Items;
 
 
-        ////constructor is going to fetch our database
-        //public Location()
-        //{
-
-        //    Locations = Location.GetAllLocations();
-        //}
+        }
 
         //public void UpdateCount(string name, int count)
         //{

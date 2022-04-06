@@ -19,14 +19,26 @@ namespace MonsterHunterInventory.Models
 			
 		}
 
-		public void UpdateCount(string name, int count)
+		public void UpdateHomebaseCount(string name, int count)
 		{
-			Database.UpdateItemCount(name, count);
+			Database.UpdateHomebaseCount(name, count);
+
+		}
+
+		public void UpdatePouchCount(string name, int count)
+		{
+			Database.UpdatePouchCount(name, count);
+
+		}
+
+		public void UpdateBunkerCount(string name, int count)
+		{
+			Database.UpdateBunkerCount(name, count);
 
 		}
 
 
-		
+
 		//public int GetHomebaseOfItem(string name)
 		//{
 		//	foreach (var homebasecount in Items) //searching for specific Item
