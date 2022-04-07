@@ -1,0 +1,253 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100&family=Special+Elite&display=swap');
+
+body {
+    background: black;
+   
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+#container {
+    box-shadow: 0 15px 30px 1px green;
+    background: black;
+    text-align: center;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 5em auto;
+    padding: 20px;
+    height: 300px;
+    width: 400px;
+}
+
+
+
+
+.product-details {
+    position: relative;
+    text-align: left;
+    overflow: hidden;
+    height: 100%;
+    float: left;
+    width: 40%;
+}
+
+#container .product-details h1 {
+    font-family: 'Special Elite', cursive;
+    display: inline-block;
+    position: relative;
+    font-size: 25px;
+    color: #37F230;
+    margin: 0;
+}
+
+    #container .product-details h1:before {
+        position: absolute;
+        content: '';
+        right: 0%;
+        top: 0%;
+        transform: translate(25px, -15px);
+        font-family: 'Special Elite', cursive;
+        display: inline-block;
+        background: #ffe6e6;
+        border-radius: 5px;
+        font-size: 14px;
+        padding: 5px;
+        color: white;
+        margin: 0;
+        animation: chan-sh 6s ease infinite;
+    }
+
+
+
+
+
+
+.hint-star {
+    display: inline-block;
+    margin-left: 0.5em;
+    color: gold;
+    width: 50%;
+}
+
+
+#container .product-details > p {
+    font-family: 'Montserrat Alternates', sans-serif;
+    text-align: left;
+    font-size: 9px;
+    padding-top: 10px;
+    color: white;
+    text-indent: 3px;
+}
+
+.control {
+    position: absolute;
+    bottom: 20%;
+    left: 22.8%;
+}
+
+.btn {
+    transform: translateY(0px);
+    transition: 0.3s linear;
+    background: #809fff;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    color: #eee;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+
+.product-image {
+    transition: all 0.3s ease-out;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    float: right;
+    width: 45%;
+    display: inline-block;
+}
+
+#container img {
+    width: 150px;
+    height: 170px;
+    margin-top: 40px;
+    padding: 10px;
+}
+
+.info {
+    background: rgba(27, 26, 26, 0.9);
+    font-family: 'Montserrat Alternates', sans-serif;
+    transition: all 0.3s ease-out;
+    transform: translateX(-100%);
+    position: absolute;
+    line-height: 1.8;
+    text-align: left;
+    font-size: 105%;
+    cursor: no-drop;
+    color: #FFF;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+    .info h2 {
+        text-align: left;
+        font-family: 'Special Elite', cursive;
+        font-size: 1em;
+        text-indent: 1px;
+    }
+
+.product-image:hover .info {
+    transform: translateX(0);
+}
+
+.info ul li {
+    transition: 0.3s ease;
+}
+
+    .info ul li:hover {
+        transform: translateX(50px) scale(1.3);
+    }
+
+.product-image:hover img {
+    transition: all 0.3s ease-out;
+}
+
+.product-image:hover img {
+    transform: scale(1.2, 1.2);
+}
+
+
+.b1, .b2, .b3 {
+    background-color: black;
+    width: 50px;
+    height: 30px;
+}
+
+.content {
+    border: 3px solid blue;
+    width: 300px;
+    height: 200px;
+}
+
+img {
+    width: 300px;
+    height: 200px;
+}
+
+#second, #third {
+    display: none
+}
+
+button {
+    outline: none;
+}
+
+input[type=text] {
+    background-color: white;
+    background-image: url('searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding-left: 40px;
+}
+
+.defaultTextBox {
+    padding: 0;
+    height: 30px;
+    position: relative;
+    left: 0;
+    outline: none;
+    border: 1px solid #cdcdcd;
+    border-color: rgba(0,0,0,.15);
+    background-color: white;
+    font-size: 16px;
+}
+
+
+.bn31 {
+    background-image: linear-gradient(to right, #006175 0%, #00a950 100%);
+    border-radius: 40px;
+    box-sizing: border-box;
+    color: #00a84f;
+    display: block;
+    height: 50px;
+    font-size: 1.4em;
+    padding: 4px;
+    position: relative;
+    text-decoration: none;
+    width: 7em;
+    z-index: 2;
+}
+
+    .bn31:hover {
+        color: #fff;
+    }
+
+    .bn31 .bn31span {
+        align-items: center;
+        background: #0e0e10;
+        border-radius: 40px;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        transition: background 0.5s ease;
+        width: 100%;
+    }
+
+    .bn31:hover .bn31span {
+        background: transparent;
+    }
+
+p {
+    text-align: justify;
+    letter-spacing: 3px;
+    color: white;
+}

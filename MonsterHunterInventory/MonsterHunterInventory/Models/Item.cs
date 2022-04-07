@@ -22,15 +22,16 @@ public class Item
 
     public string Description { get; set; } = string.Empty;
 
-    public int HomebaseCount { get; set; }
+        public int ItemCount { get; set; } = 0;
 
-    public int BunkerCount { get; set; }
+        public int HomebaseCount { get; set; } = 0;
 
-    public int PouchCount { get; set; }
+        public int BunkerCount { get; set; } = 0;
+
+        public int PouchCount { get; set; } = 0;
 
 
 
-        
         public int count;
 
 

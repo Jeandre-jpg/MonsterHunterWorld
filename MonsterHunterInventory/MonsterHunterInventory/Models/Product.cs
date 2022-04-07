@@ -21,9 +21,19 @@ namespace MonsterHunterInventory.Models
 
 	public string Description { get; set; } = string.Empty;
 
-	private int count;
+		public string ItemOne { get; set; } = string.Empty;
 
-	public int Count { get { return count; } }
+		public string ItemTwo { get; set; } = string.Empty;
+
+		private int count;
+
+		public int ItemOneCount { get; set; }
+
+		public int ItemTwoCount { get; set; }
+
+		
+
+		public int Count { get { return count; } }
 
 	//TODO: Add Ingredient Property
 	public List<string> Ingredients { get; set; }

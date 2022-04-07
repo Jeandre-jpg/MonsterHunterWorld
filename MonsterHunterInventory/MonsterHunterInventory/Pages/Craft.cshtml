@@ -58,6 +58,8 @@
                             if (ingredient != "")
                             {
                                 <p style="padding:10px; margin:10px; margin-left:20px;">@ingredient</p>
+                                <span style="float:right;">@product.ItemOneCount</span>
+                                <span style="float:right;">@product.ItemTwoCount</span>
                             }
                         }
 
@@ -65,31 +67,46 @@
                         @{
                             if (product.IsCraftable())
                             {
-                                <form method="post"
-                                      asp-page-handler="craft"
-                                      asp-route-name="@product.Name"
-                                      asp-route-count="@product.Count"
-                                      asp-route-ingredients="@product.Ingredients">
+                                                <form method="post"
+                                                      asp-page-handler="craft"
+                                                      asp-route-name="@product.Name"
+                                                      asp-route-count="@product.Count"
+                                                      asp-route-ingredients="@product.Ingredients">
 
-                                    @{
-                                        foreach (var ingredient in product.Ingredients)
-                                        {
-                                            <input type="hidden" name="ingredients[]" value="@ingredient" />
-                                        }
-                                    }
+                                                    @{
+                                                        foreach (var ingredient in product.Ingredients)
+                                                        {
+                                                            <input type="hidden" name="ingredients[]" value="@ingredient" />
+
+                                                            if (product.ItemOne == ingredient)
+                                                            {
+                                                                <span style="float:right;">@product.ItemOneCount</span>
+                                                               
+                                                            }
+
+                                                            if (product.ItemTwo == ingredient)
+                                                            {
+                                                                
+                                                                <span style="float:right;">@product.ItemTwoCount</span>
+                                                            }
 
 
-                                    <input class="btn btn-dark" type="submit" value="Craft Product" />
-                                </form>
+
+                                                        }
+                                                    }
+
+
+                                                    <input class="btn btn-dark" type="submit" value="Craft Product" />
+                                                </form>
                             }
                         }
 
 
                         @*<form method="post" asp-page-handler="update">
-                                <input class="form-control" name="count" value="@product.Count" type="number" min="0" step="1"/>
-                                <input type="hidden" name="name" value="@product.Name"/>
-                                <button class="btn btn-outline-primary">Update</button>
-                            </form>*@
+            <input class="form-control" name="count" value="@product.Count" type="number" min="0" step="1"/>
+            <input type="hidden" name="name" value="@product.Name"/>
+            <button class="btn btn-outline-primary">Update</button>
+        </form>*@
                     </div>
                 </div>
             </div>
