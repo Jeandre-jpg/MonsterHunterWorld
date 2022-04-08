@@ -22,6 +22,21 @@ namespace MonsterHunterInventory.Services
 			return con.ServerVersion;
 		}
 
+        internal static bool CraftProduct(int productId, int count, List<string> ingredients)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static bool CraftProduct(string productId, int count, List<string> ingredients)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal static void CraftProduct(int productId, int count, List<int> ingredients)
+        {
+            throw new NotImplementedException();
+        }
+
         internal static void UpdatePlaceCount(string name, int count)
         {
             throw new NotImplementedException();
@@ -283,37 +298,69 @@ namespace MonsterHunterInventory.Services
 
 		}
 
-		public static void CraftProduct(int productId, int newCount, List<int> ingredients)
+		public static bool CraftProduct(int productId, int newCount, List<string> ingredients, string verify)
 		{
 
+			//First check verify code
 
-			UpdateItemCountAfterCraft(ingredients, 1);
 
-            //establish connection to db
-            using var con = new MySqlConnection(serverConfiguration);
-			con.Open();
+				//establish connection to db
+				using var con = new MySqlConnection(serverConfiguration);
+				con.Open();
 
-			//sql query
-			//sql query
-			string sql = $"INSERT INTO `productLocationCount`(`locationId`, `productId`, `totalCount`) VALUES (1,@productId,@count)";
-
-			if (GetLocationProductCount(1, productId) > 0)
-			{
-				sql = $"UPDATE `productLocationCount`SET `locationId`=1, `productId`=@productId, `totalCount`=@count WHERE `locationId` = 1 AND `productId` = @productId";
-			}
+				//sql query
+				string sql = $"UPDATE `productLocationCount`SET `locationId`=1, `productId`=@productId, `totalCount`=@count WHERE `locationId` = 1 AND `productId` = @productId";
 			using var cmd = new MySqlCommand(sql, con);
 
-			//adding the actual values by replacing the @ placeholders
-			cmd.Parameters.AddWithValue("@productId", productId);
-			cmd.Parameters.AddWithValue("@count", newCount);
+				//adding the actual values by replacing the @ placeholders
+				cmd.Parameters.AddWithValue("@productId", productId);
+				cmd.Parameters.AddWithValue("@count", newCount);
 
-			//prepare command
-			cmd.Prepare();
-			//exucute command
-			cmd.ExecuteNonQuery();// Non query = Because we don't want to get a query value back
+				//prepare command
+				cmd.Prepare();
+				//exucute command
+				cmd.ExecuteNonQuery();// Non query = Because we don't want to get a query value back
 
-			//TODO: Remove the ingredients
+				//TODO: Remove the ingredients
+
+				return true; //if verified code was incorrect return false, because recipe was not crafted
+			
+			
+
+
 		}
+
+		//public static void CraftProduct(int productId, int newCount, List<int> ingredients)
+		//{
+
+
+		//	UpdateItemCountAfterCraft(ingredients, 1);
+
+  //          //establish connection to db
+  //          using var con = new MySqlConnection(serverConfiguration);
+		//	con.Open();
+
+		//	//sql query
+		//	//sql query
+		//	string sql = $"INSERT INTO `productLocationCount`(`locationId`, `productId`, `totalCount`) VALUES (1,@productId,@count)";
+
+		//	if (GetLocationProductCount(1, productId) > 0)
+		//	{
+		//		sql = $"UPDATE `productLocationCount`SET `locationId`=1, `productId`=@productId, `totalCount`=@count WHERE `locationId` = 1 AND `productId` = @productId";
+		//	}
+		//	using var cmd = new MySqlCommand(sql, con);
+
+		//	//adding the actual values by replacing the @ placeholders
+		//	cmd.Parameters.AddWithValue("@productId", productId);
+		//	cmd.Parameters.AddWithValue("@count", newCount);
+
+		//	//prepare command
+		//	cmd.Prepare();
+		//	//exucute command
+		//	cmd.ExecuteNonQuery();// Non query = Because we don't want to get a query value back
+
+		//	//TODO: Remove the ingredients
+		//}
 
 
 

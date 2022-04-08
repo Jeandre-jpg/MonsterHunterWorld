@@ -57,50 +57,64 @@
                         {
                             if (ingredient != "")
                             {
-                                <p style="padding:10px; margin:10px; margin-left:20px;">@ingredient</p>
-                                @*<span style="float:right;">@product.ItemOneId</span>
-                                <span style="float:right;">@product.ItemTwoId</span>*@
-                            }
-                        }
+                    <p style="padding:10px; margin:10px; margin-left:20px;">@ingredient</p> @*<span style="float:right;">@product.ItemOneId</span>
+
+                            <span style="float:right;">@product.ItemTwoId</span>*@
+
+                                            <form method="post"
+                                                  asp-page-handler="craft"
+                                                  asp-route-name="@product.Name"
+                                                  asp-route-count="@product.Count">
+                                                >
+
+                                                @{ foreach (var ingredient in product.Ingredients)
+                                                                            {
+                                                    <input type="hidden" name="ingredients[]" value="@ingredient" /> if (product.ItemOne == ingredient)
+                                                                                {
+                                                    <span style="float:right;">@product.ItemOneId</span> }
+
+                                                                                if (product.ItemTwo == ingredient)
+                                                                                {
+
+                                                    <span style="float:right;">@product.ItemTwoId</span> }
 
 
-                        @{
-                            if (product.isCraftable)
-                            {
-                                                <form method="post"
-                                                      asp-page-handler="craft"
-                                                       asp-route-name="@product.Name"
-                                                       asp-route-count="@product.Count"
-                                                      >
-                                                      >
 
-                                                    @{
-                                                        foreach (var ingredient in product.Ingredients)
-                                                        {
-                                                            <input type="hidden" name="ingredients[]" value="@ingredient" />
+                                                                            } }
 
-                                                            if (product.ItemOne == ingredient)
-                                                            {
-                                                                <span style="float:right;">@product.ItemOneId</span>
-                                                               
+
+                                                <input class="btn btn-dark" type="submit" value="Craft Product" />
+                                            </form>}
+
                                                             }
+
+
+                        @{ if (product.isCraftable)
+                                            {
+                            <form method="post"
+                                  asp-page-handler="craft"
+                                  asp-route-name="@product.Name"
+                                  asp-route-count="@product.Count">
+                                >
+
+                                @{ foreach (var ingredient in product.Ingredients)
+                                                        {
+                                    <input type="hidden" name="ingredients[]" value="@ingredient" /> if (product.ItemOne == ingredient)
+                                                            {
+                                    <span style="float:right;">@product.ItemOneId</span> }
 
                                                             if (product.ItemTwo == ingredient)
                                                             {
-                                                                
-                                                                <span style="float:right;">@product.ItemTwoId</span>
-                                                            }
+
+                                    <span style="float:right;">@product.ItemTwoId</span> }
 
 
 
-                                                        }
-                                                    }
+                                                        } }
 
 
-                                                    <input class="btn btn-dark" type="submit" value="Craft Product" />
-                                                </form>
-                            }
-                        }
+                                <input class="btn btn-dark" type="submit" value="Craft Product" />
+                            </form> } }
 
 
                         @*<form method="post" asp-page-handler="update">

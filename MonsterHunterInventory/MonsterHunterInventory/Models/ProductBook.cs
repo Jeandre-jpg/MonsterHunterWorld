@@ -18,13 +18,21 @@ namespace MonsterHunterInventory.Models
 		}
 
 
-		public void CraftProduct(int productId, int count, List<int> ingredients)
+		public bool CraftProduct(int productId, int count, List<string> ingredients)
 		{
 
 			//TODO: Call Database
 
-			Database.CraftProduct(productId, count, ingredients);
+			return Database.CraftProduct(productId, count, ingredients);
 		}
+
+		//public void CraftProduct(int productId, int count, List<int> ingredients)
+		//{
+
+		//	//TODO: Call Database
+
+		//	Database.CraftProduct(productId, count, ingredients);
+		//}
 
 		public int GetLocationProductCount(int locationId, int productId)
 		{
@@ -43,6 +51,11 @@ namespace MonsterHunterInventory.Models
 			return Database.GetCountOfItem(itemId);
 
 		}
-	}
+
+        internal void CraftProduct(int productId, int v, List<int> ingredients)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }
 
