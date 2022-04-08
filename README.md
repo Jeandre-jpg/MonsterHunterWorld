@@ -86,7 +86,6 @@ For this project, I chose to create the inventory system for a game, namely Mons
       <a href="#development-process">Development Process</a>
       <ul>
          <li><a href="#highlights-andchallenges">Highlights and Challenges</a></li>
-         <li><a href="#peer-review-feedback">Peer Review Feedback</a></li>
          <li><a href="#scope-planning">Scope Planning</a></li>
       </ul>
     </li>
@@ -212,12 +211,6 @@ Here are a couple of ways to clone this repo:
  <img src="https://user-images.githubusercontent.com/55391556/155934387-a72bdea3-f197-416e-9492-6cd74f9fd1c7.jpg"/> 
 </p>
 
-### ERD Diagram
-
-<p align="center">
- <img src=""/> 
-</p>
-  
   
 ## Development Process
 
@@ -225,25 +218,8 @@ Here are a couple of ways to clone this repo:
 ### Highlights and Challenges
 
 <p align="center">
- <img src=""/> 
+ <img src="https://user-images.githubusercontent.com/55391556/162509289-36ba8286-b589-4c8c-ac83-56d917f97d23.jpg"/> 
 </p>
-
-### Peer Review Feedback
-
-#### Peer 1:
-
-
-#### Peer 2:
-
-
-#### Peer 3:
-
-
-#### Peer 4:
-
-
-#### Peer 5:
-
 
 
 ### Scope Planning
@@ -257,20 +233,27 @@ Here are a couple of ways to clone this repo:
 ### Mockups
 
 <p align="center">
- <img src=""/> 
+ <img src="https://user-images.githubusercontent.com/55391556/162508683-876d2719-10ab-4337-945c-ea868642b51c.jpg"/>
 </p>
 
 <p align="center">
- <img src=""/> 
+ <img src="https://user-images.githubusercontent.com/55391556/162508769-79740f68-931d-486a-8220-d480258caa8c.jpg"/>
 </p>
 
 <p align="center">
- <img src=""/> 
+ <img src="https://user-images.githubusercontent.com/55391556/162508846-bf148bfe-964f-4977-af30-831e87d05646.jpg"/> 
 </p>
 
 <p align="center">
- <img src=""/> 
+ <img src="https://user-images.githubusercontent.com/55391556/162508963-3da5b92d-fe80-4dc0-b6d1-971216bb8cdb.png"/> 
 </p>
+
+<p align="center">
+ <img src="https://user-images.githubusercontent.com/55391556/162509084-81275e31-79de-4a2d-9f68-53aa006aee52.jpg"/> 
+
+
+
+
 
 
 
@@ -279,12 +262,22 @@ Here are a couple of ways to clone this repo:
 
 #### Final Video Demonstration:
 
-You can download the Video demonstration here [Demo]()
+You can download the Video demonstration here [Demo](https://drive.google.com/file/d/1VwGV8OahVJ2qaPsM1iTj_COGaNUZdomE/view?usp=sharing)
 
 ## Conclusion
 
 <p align="center">
- 
+ For this term, I made an inventory system for a
+game, namely Monster Hunter World.
+I felt that I struggled this term in terms of time
+management and poor plaining skills. As well as
+the intricate execution of having and maintaining a
+relational database. I do however feel that I have
+established a well designed app that fits the
+Monster Hunter World.
+I aim to put more research in my coming projects
+and plan far ahead to avoid mishaps and learn from
+this term's mistakes.
 </p>
 
 #### Download:
