@@ -10,15 +10,18 @@ namespace MonsterHunterInventory.Pages
 {
     public class LocationsModel : PageModel
     {
-        public List<Item> AllHomeBaseItems = new List<Item>();
-        public List<Item> AllPouchItems = new List<Item>();
-        public List<Item> AllBunkerItems = new List<Item>();
+        private List<Location> locationList = new List<Location>();
+        public List<Location> allLocations = new List<Location>();
+
         public void OnGet()
         {
             //Creating instance of Inventory class for the blocks
-            AllHomeBaseItems = new Inventory().Items;
-            AllPouchItems = new Inventory().Items;
-            AllBunkerItems = new Inventory().Items;
+            locationList = new Locations().allLocations;
+            foreach(var location in locationList)
+            {
+                location.items = new Locations().GetItemsForLocation(location.ID);
+                allLocations.Add(location);
+            }
         }
 
        

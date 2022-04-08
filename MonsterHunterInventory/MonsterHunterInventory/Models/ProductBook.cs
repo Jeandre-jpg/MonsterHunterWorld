@@ -18,12 +18,30 @@ namespace MonsterHunterInventory.Models
 		}
 
 
-		public void CraftProduct(string name, int count, List<string> ingredients)
+		public void CraftProduct(int productId, int count, List<int> ingredients)
 		{
 
 			//TODO: Call Database
 
-			Database.CraftProduct(name, count, ingredients);
+			Database.CraftProduct(productId, count, ingredients);
+		}
+
+		public int GetLocationProductCount(int locationId, int productId)
+		{
+			return Database.GetLocationProductCount(locationId, productId);
+
+		}
+
+		public int GetCountOfProduct(int productId)
+		{
+			return Database.GetCountOfProduct(productId);
+
+		}
+
+		public int GetCountOfItem(int itemId)
+		{
+			return Database.GetCountOfItem(itemId);
+
 		}
 	}
 }

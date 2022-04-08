@@ -12,8 +12,12 @@ namespace MonsterHunterInventory.Models
 		count = newCount;
 	}
 
-	//recipe constructor
-	public string Name { get; set; } = string.Empty;
+		//recipe constructor
+
+		public int ID { get; set; }
+
+
+		public string Name { get; set; } = string.Empty;
 
 	public string ProductType { get; set; } = string.Empty;
 
@@ -27,11 +31,15 @@ namespace MonsterHunterInventory.Models
 
 		private int count;
 
-		public int ItemOneCount { get; set; }
+		public int ItemOneId { get; set; }
 
-		public int ItemTwoCount { get; set; }
+		public int ItemTwoId { get; set; }
 
-		
+		public int ItemCount { get; set; }
+
+		public bool isCraftable { get; set; }
+
+
 
 		public int Count { get { return count; } }
 
@@ -52,8 +60,8 @@ namespace MonsterHunterInventory.Models
 			if (item != "")//check if null
 			{
 
-				int count;
-				if (map.TryGetValue(item, out count)) //have we added this ingredient before?
+				int ItemCount;
+				if (map.TryGetValue(item, out ItemCount)) //have we added this ingredient before?
 				{
 					//if yes = increment the count
 					map[item] += 1;

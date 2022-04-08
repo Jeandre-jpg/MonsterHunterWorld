@@ -42,13 +42,13 @@
         {
 
             <div class="col-3">
-                <div class="card @(product.IsCraftable() ? "border-success" : "bg-black")">
+                <div class="card @(product.isCraftable ? "border-success" : "bg-black")">
                     <img class="card-img-top" src="@product.ImageURL" alt="Card Image Cap">
                     <div class="card-body">
                         <div class="card-img-top" src="@product.ImageURL" alt="Card Image Cap"></div>
                         <h5 class="card-title">
                             <span>@product.Name </span>
-                            <span style="float:right;">@product.Count</span>
+                            <span style="float:right;">@product.ItemCount</span>
                         </h5>
                         <h6 class="card-title">@product.ProductType</h6>
                         <p>Ingredients:</p>
@@ -58,20 +58,21 @@
                             if (ingredient != "")
                             {
                                 <p style="padding:10px; margin:10px; margin-left:20px;">@ingredient</p>
-                                <span style="float:right;">@product.ItemOneCount</span>
-                                <span style="float:right;">@product.ItemTwoCount</span>
+                                @*<span style="float:right;">@product.ItemOneId</span>
+                                <span style="float:right;">@product.ItemTwoId</span>*@
                             }
                         }
 
 
                         @{
-                            if (product.IsCraftable())
+                            if (product.isCraftable)
                             {
                                                 <form method="post"
                                                       asp-page-handler="craft"
-                                                      asp-route-name="@product.Name"
-                                                      asp-route-count="@product.Count"
-                                                      asp-route-ingredients="@product.Ingredients">
+                                                       asp-route-name="@product.Name"
+                                                       asp-route-count="@product.Count"
+                                                      >
+                                                      >
 
                                                     @{
                                                         foreach (var ingredient in product.Ingredients)
@@ -80,14 +81,14 @@
 
                                                             if (product.ItemOne == ingredient)
                                                             {
-                                                                <span style="float:right;">@product.ItemOneCount</span>
+                                                                <span style="float:right;">@product.ItemOneId</span>
                                                                
                                                             }
 
                                                             if (product.ItemTwo == ingredient)
                                                             {
                                                                 
-                                                                <span style="float:right;">@product.ItemTwoCount</span>
+                                                                <span style="float:right;">@product.ItemTwoId</span>
                                                             }
 
 

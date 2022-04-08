@@ -4,19 +4,26 @@ using MonsterHunterInventory.Services;
 
 namespace MonsterHunterInventory.Models
 {
-	public class Location
+	public class Locations
 
 
 	{
-        public int ID { get; set; }
 
-        public string Name { get; set; } = string.Empty;
+        public List<Location> allLocations = new List<Location>();
 
-        public string ImageURL { get; set; } = string.Empty;
+        public Locations()
+        {
+            //Creating instance of Inventory class for the blocks
+            allLocations = Database.GetAllLocations();
 
-        public string Description { get; set; } = string.Empty;
 
-        public List<Item> items { get; set; }
+        }
+
+        public List<Item> GetItemsForLocation(int locationId)
+        {
+            return Database.GetItemsForLocation(locationId);
+
+        }
 
         //public void UpdateCount(string name, int count)
         //{

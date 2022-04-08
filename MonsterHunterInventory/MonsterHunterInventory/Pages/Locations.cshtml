@@ -1,5 +1,5 @@
 @page
-@model MonsterHunterInventory.Pages.InventoryModel
+@model MonsterHunterInventory.Pages.LocationsModel
 @{ }
 
 <html lang="en">
@@ -42,110 +42,83 @@
 
 
         </div>
-        <div class="col-6 offset-1">
+        @foreach (var location in Model.allLocations)
+            {
+            <div class="col-6 offset-1 container-@location.ID">
 
-            <div class="mb-5 mb-lg-0 text-center text-lg-center">
-                <p class="center fw-normalmb-5" style="color:white;">
-                    Monster Hunter World"
-                </p>
-
-                <div class="container-1 container-fluid">
-                    <h1 class="display-1 lh-1 mb-3" style="color:white;">Homebase</h1>
-                    <p class="lead fw-normalmb-5" style="color:white;">Join the hunt across the world!</p>
-                    <img src="img/homebase_map.jpg" alt="Home Base" style="width:100%; height: 500px;" />
-                    <p class="lead fw-normalmb-2 " style="color: white; font-size: 25px; padding-top: 5rem; justify-content: left;">
-
+                <div class="mb-5 mb-lg-0 text-center text-lg-center">
+                    <p class="center fw-normalmb-5" style="color:white;">
+                        Monster Hunter World"
                     </p>
-                </div>
 
-                <div class="container-3 container-fluid">
-                    <h1 class="display-1 lh-1 mb-3" style="color:white;">Bunker</h1>
-                    <p class="lead fw-normalmb-5" style="color:white;">Join the hunt across the world!</p>
-                    <img src="img/bunker.jpg" alt="Bunker" style="width:100%; height: 500px;" />
-                    <p class="lead fw-normalmb-2 " style="color: white; font-size: 25px; padding-top: 5rem; justify-content: left;">
 
-                    </p>
+                    <div class="container-@location.ID container-fluid">
+                        <h1 class="display-1 lh-1 mb-3" style="color:white;">@location.Name</h1>
+                        <p class="lead fw-normalmb-5" style="color:white;">Join the hunt across the world!</p>
+                        <img src="@location.ImageURL" alt="Home Base" style="width:100%; height: 500px;" />
+                        <p class="lead fw-normalmb-2 " style="color: white; font-size: 25px; padding-top: 5rem; justify-content: left;">
+                            @location.Description
+                        </p>
+                    </div>
+                    
                 </div>
             </div>
-        </div>
 
-        <div class="col-3">
-
-
-
-            @** @foreach (var item in Model.allItems)
-        {
-
-
-            @if (item.HomebaseCount != 0 && item.PouchCount != 0 && item.BunkerCount != 0)
-            {
+            <div class="container-@location.ID col-3">
 
 
 
-                <div id="container">
-
-                    <div class="product-details">
-
-                        <h1>@item.Name</h1>
-                        <p class="information">" @item.Description</p>
-
-                    </div>
-
-                    <div class="product-image">
-
-                        <img src="@item.ImageURL" />
+                @foreach (var item in location.items)
+                {
 
 
-                        <div class="info">
-                            <h2> Description</h2>
-                            <ul>
-                                <li><strong>Item Type : </strong>@item.ItemType</li>
-                                <li><strong>Category : </strong>@item.GroupType</li>
-                            </ul>
-                            <div class="color">
-                                 <h2 style="color: #fff;">Total Amount:</h2>
-                                <p class="homebase" style="color: #fff;">@item.HomebaseCount</p>
-                                <p class="pouch" style="color: #fff;">@item.PouchCount</p>
-                                <p class="bunker" style="color: #fff;">@item.BunkerCount</p>
+         
+
+
+
+                        <div id="container">
+
+                            <div class="product-details">
+
+                                <h1>@item.Name</h1>
+                                <p class="information">" @item.Description</p>
+
+                            </div>
+
+                            <div class="product-image">
+
+                                <img src="@item.ImageURL" />
+
+
+                                <div class="info">
+                                    <h2> Description</h2>
+                                    <ul>
+                                        <li><strong>Item Type : </strong>@item.ItemType</li>
+                                        <li><strong>Category : </strong>@item.GroupType</li>
+                                    </ul>
+                                    <div class="color">
+                                        <h2 style="color: #fff;">Total Amount:</h2>
+                                        <p class="homebase" style="color: #fff;">@item.ItemCount</p>
+                                    </div>
+
+                                </div>
                             </div>
 
                         </div>
-                    </div>
-
-                </div>
 
 
 
-                @*<div class="container" style=" position: relative;">
-                    <div class="card" style="position: relative; background: #232323; border-radius: 20px; width: 100%; height: 350px;">
+  
 
-                        <div class="contentBx" style=" position: absolute; bottom: 0; width: 100%; text-align: center; transition: 1s; z-index: 10;">
-                            <h5 class="card-title" style=" position: relative; font-weight: 600; letter-spacing: 1px; color: #fff; margin: 0;">@item.Name</h5>
-                            <div class="size">
-                                <h3 style="color: #fff; font-weight: 300; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-right: 10px;">Information :</h3>
-                                <h6 class="card-title" style="color: #fff; font-weight: 300; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-right: 10px;">@item.ItemType</h6>
-                                <h6 class="card-title" style="color: #fff; font-weight: 300; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-right: 10px;">@item.GroupType</h6>
-                            </div>
-                            <div class="color">
-                                <h3 style="color: #fff;">Count :</h3>
-                                <p class="homebase" style="color: #fff;">@item.HomebaseCount</p>
-                                <p class="pouch" style="color: #fff;">@item.PouchCount</p>
-                                <p class="bunker" style="color: #fff;">@item.BunkerCount</p>
-                            </div>
-                            <input style="color: #fff; font-weight: 300; font-size: 14px; text-transform: uppercase; letter-spacing: 2px; margin-right: 10px;" type="text" class="textBoxHome defaultTextBox" />
-                        </div>
-                    </div>
-                </div>
+
+                    }
+
+            </div>
             }
 
 
-        }
-            *@
+
         </div>
-
-    
-
-    </div>
 
 
     <!-- JavaScript Libraries -->

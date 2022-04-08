@@ -63,6 +63,39 @@ namespace MonsterHunterInventory.Services
 			return results;
 		}
 
+		//Get all of Locations
+		public static List<Location> GetAllLocations()
+		{
+			//Create and open our db collection
+			using var con = new MySqlConnection(serverConfiguration);
+			con.Open();
+
+			//setup our query
+			string sql = "SELECT * FROM locations";
+			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in 
+
+			//Creates an instance of our cmd result that can be read in C#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			//init our return list
+			var results = new List<Location>();
+
+			while (reader.Read())
+			{
+				var item = new Location()
+				{
+					ID = reader.GetInt32(0),
+					Name = reader.GetString(1),
+					ImageURL = reader.GetString(2),
+					Description = reader.GetString(3),
+
+				};
+
+				results.Add(item);
+			}
+
+			return results;
+		}
 
 		//public static void UpdateItemCount(string name, int newCount)
 		//{
@@ -120,7 +153,7 @@ namespace MonsterHunterInventory.Services
 			//sql query
 			string sql = $"INSERT INTO `itemLocationCount`(`locationId`, `itemId`, `totalCount`) VALUES (2,@itemId,@count)";
 
-			if (GetLocationItemCount(1, itemId) > 0)
+			if (GetLocationItemCount(2, itemId) > 0)
 			{
 				sql = $"UPDATE `itemLocationCount`SET `locationId`=1, `itemId`=@itemId, `totalCount`=@count WHERE `locationId` = 2 AND `itemId` = @itemId"; ;
 			}
@@ -144,10 +177,11 @@ namespace MonsterHunterInventory.Services
 			using var con = new MySqlConnection(serverConfiguration);
 			con.Open();
 
-			//sql query
+			// Insert into db 
 			string sql = $"INSERT INTO `itemLocationCount`(`locationId`, `itemId`, `totalCount`) VALUES (3,@itemId,@count)";
 
-			if (GetLocationItemCount(1, itemId) > 0)
+			// If items already exist update existing data
+			if (GetLocationItemCount(3, itemId) > 0)
 			{
 				sql = $"UPDATE `itemLocationCount`SET `locationId`=1, `itemId`=@itemId, `totalCount`=@count WHERE `locationId` = 3 AND `itemId` = @itemId"; ;
 			}
@@ -184,23 +218,24 @@ namespace MonsterHunterInventory.Services
 
 			while (reader.Read())
 			{
-				var product = new Product(reader.GetInt32(4))
+				var product = new Product(reader.GetInt32(0))
 				{
-					Name = reader.GetString(0),
-					ImageURL = reader.GetString(1),
-					ProductType = reader.GetString(2),
-					Description = reader.GetString(3),
-					ItemOne = reader.GetString(5),
-					ItemTwo = reader.GetString(6),
-					ItemOneCount = reader.GetInt32(7),
-					ItemTwoCount = reader.GetInt32(8)
+					ID = reader.GetInt32(0),
+					Name = reader.GetString(1),
+					ImageURL = reader.GetString(2),
+					ProductType = reader.GetString(3),
+					Description = reader.GetString(4),
+					ItemOne = reader.GetString(6),
+					ItemTwo = reader.GetString(7),
+					ItemOneId = reader.GetInt32(8),
+					ItemTwoId = reader.GetInt32(9)
 
 				};
 
 				var ingredients = new List<string>();
 
-				ingredients.Add(reader.GetString(5)); //Ingredient 1
-				ingredients.Add(reader.GetString(6)); //Ingredient 2
+				ingredients.Add(GetProductIngredients(product.ItemOneId)); //Ingredient 1
+				ingredients.Add(GetProductIngredients(product.ItemTwoId)); //Ingredient 2
 				
 				product.Ingredients = ingredients;
 
@@ -210,21 +245,66 @@ namespace MonsterHunterInventory.Services
 			return results;
 		}
 
-		public static void CraftProduct(string nameId, int newCount, List<string> ingredients)
+		public static int GetCountOfProduct(int productId)
 		{
-
-			UpdateItemCountAfterCraft(ingredients);
 
 			//establish connection to db
 			using var con = new MySqlConnection(serverConfiguration);
 			con.Open();
 
+			//setup our query
+			string sql = $"SELECT SUM(totalCount) FROM productLocationCount WHERE `productId` = @productId";
+			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
+
+			cmd.Parameters.AddWithValue("@productId", productId);
+
+			//Creates an instance of our cmd result that can be read in C#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			int count = 0;
+
+			//adding the actual values by replacing the @ placeholders
+
+
+			while (reader.Read())
+			{
+				if (reader.GetValue(0) != DBNull.Value)
+				{
+					count = reader.GetInt32(0);
+				}
+
+			}
+
+			con.Close();
+
+
+
+			return count;
+
+		}
+
+		public static void CraftProduct(int productId, int newCount, List<int> ingredients)
+		{
+
+
+			UpdateItemCountAfterCraft(ingredients, 1);
+
+            //establish connection to db
+            using var con = new MySqlConnection(serverConfiguration);
+			con.Open();
+
 			//sql query
-			string sql = $"UPDATE `products` SET `count` = @count WHERE `name` = @name";
+			//sql query
+			string sql = $"INSERT INTO `productLocationCount`(`locationId`, `productId`, `totalCount`) VALUES (1,@productId,@count)";
+
+			if (GetLocationProductCount(1, productId) > 0)
+			{
+				sql = $"UPDATE `productLocationCount`SET `locationId`=1, `productId`=@productId, `totalCount`=@count WHERE `locationId` = 1 AND `productId` = @productId";
+			}
 			using var cmd = new MySqlCommand(sql, con);
 
 			//adding the actual values by replacing the @ placeholders
-			cmd.Parameters.AddWithValue("@name", nameId);
+			cmd.Parameters.AddWithValue("@productId", productId);
 			cmd.Parameters.AddWithValue("@count", newCount);
 
 			//prepare command
@@ -237,33 +317,32 @@ namespace MonsterHunterInventory.Services
 
 
 
-		public static void UpdateItemCountAfterCraft(List<string> ingredients)
+		public static void UpdateItemCountAfterCraft(List<int> ingredients, int locationId)
 		{
 			//establish connection to db
 			using var con = new MySqlConnection(serverConfiguration);
 			con.Open();
 
-			foreach (string ingredient in ingredients)
+			foreach (int ingredient in ingredients)
 			{
+				
+				int currentCount = GetCountOfItem(ingredient);
 
-				if (ingredient != "")
-				{
-					//int currentCount = GetCountOfItem(ingredient);
+                //sql query
+                string sql = $"UPDATE `itemLocationCount` SET `totalCount` = @count WHERE `locationId` = @locationId AND itemId = @itemId";
+				using var cmd = new MySqlCommand(sql, con);
 
-					//sql query
-					string sql = $"UPDATE `items` SET `count` = @count WHERE `name` = @name";
-					using var cmd = new MySqlCommand(sql, con);
+				//adding the actual values by replacing the @ placeholders
+				cmd.Parameters.AddWithValue("@itemId", ingredient);
+				cmd.Parameters.AddWithValue("@locationId", locationId);
+				cmd.Parameters.AddWithValue("@count", currentCount - 1);
 
-					//adding the actual values by replacing the @ placeholders
-					cmd.Parameters.AddWithValue("@name", ingredient);
-					//cmd.Parameters.AddWithValue("@count", currentCount - 1);
-
-					//prepare command
-					cmd.Prepare();
-					//exucute command
-					cmd.ExecuteNonQuery();// Non query = Because we don't want to get a query value back
-				}
+                //prepare command
+                cmd.Prepare();
+				//exucute command
+				cmd.ExecuteNonQuery();// Non query = Because we don't want to get a query value back
 			}
+			
 		}
 
 		public static int GetCountOfItem(int itemId)
@@ -343,27 +422,29 @@ namespace MonsterHunterInventory.Services
 
 		}
 
-		public static int GetAllHomeBaseItems(string name)
+		public static String GetProductIngredients(int itemId)
 		{
 
 			//establish connection to db
 			using var con = new MySqlConnection(serverConfiguration);
 			con.Open();
+			//SELECT products.id, products.name,products.img, products.producttype, products.description, itemsListOne.name as item1, itemsListTwo.name as item2
+			//FROM((products INNER JOIN items itemsListOne ON itemsListOne.id = products.itemOneId) INNER JOIN items itemsListTwo ON itemsListTwo.id = products.itemTwoId)
 
 			//setup our query
-			string sql = "SELECT * FROM items WHERE homebasecount > 0;";
+			string sql = $"SELECT items.name FROM products INNER JOIN items ON items.id = @itemId";
 			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
 
-			cmd.Parameters.AddWithValue("@name", name);
+			cmd.Parameters.AddWithValue("@itemId", itemId);
 
 			//Creates an instance of our cmd result that can be read in C#
 			using MySqlDataReader reader = cmd.ExecuteReader();
 
-			int homebasecount = 0;
+			String homebasecount = String.Empty;
 
 			while (reader.Read())
 			{
-				homebasecount = reader.GetInt32(7);
+				homebasecount = reader.GetString(0);
 
 			}
 
@@ -375,8 +456,7 @@ namespace MonsterHunterInventory.Services
 
 		}
 
-
-		public static int GetAllPouchItems(string name)
+		public static int GetLocationProductCount(int locationId, int productId)
 		{
 
 			//establish connection to db
@@ -384,19 +464,26 @@ namespace MonsterHunterInventory.Services
 			con.Open();
 
 			//setup our query
-			string sql = "SELECT * FROM items WHERE pouchcount > 0;";
+			string sql = $"SELECT `totalCount` FROM productLocationCount WHERE productId = @productId AND locationId = @locationId";
 			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
 
-			cmd.Parameters.AddWithValue("@name", name);
+			cmd.Parameters.AddWithValue("@productId", productId);
+			cmd.Parameters.AddWithValue("@locationId", locationId);
 
 			//Creates an instance of our cmd result that can be read in C#
 			using MySqlDataReader reader = cmd.ExecuteReader();
 
-			int pouchcount = 0;
+			int count = 0;
+
+			//adding the actual values by replacing the @ placeholders
+
 
 			while (reader.Read())
 			{
-				pouchcount = reader.GetInt32(6);
+				if (reader.GetValue(0) != DBNull.Value)
+				{
+					count = reader.GetInt32(0);
+				}
 
 			}
 
@@ -404,14 +491,128 @@ namespace MonsterHunterInventory.Services
 
 
 
-			return pouchcount;
+			return count;
+
+		}
+
+		public static List<Item> GetItemsForLocation(int locationId)
+		{
+
+			//establish connection to db
+			using var con = new MySqlConnection(serverConfiguration);
+			con.Open();
+
+			//setup our query
+			string sql = $"SELECT * FROM items INNER JOIN itemLocationCount ON items.id = itemLocationCount.itemId WHERE `locationId` = @locationId AND itemLocationCount.totalCount > 0";
+			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
+
+			cmd.Parameters.AddWithValue("@locationId", locationId);
+			//Creates an instance of our cmd result that can be read in C#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			//init our return list
+			var results = new List<Item>();
+
+			while (reader.Read())
+			{
+				var item = new Item(reader.GetInt32(0))
+				{
+					ID = reader.GetInt32(0),
+					Name = reader.GetString(1),
+					ImageURL = reader.GetString(2),
+					ItemType = reader.GetString(3),
+					Description = reader.GetString(4),
+					GroupType = reader.GetString(5),
+					ItemCount = reader.GetInt32(8)
+
+				};
+
+				results.Add(item);
+			}
+
+			return results;
+
+		}
+
+		public static List<Item> GetAllHomeBaseItems()
+		{
+
+			//establish connection to db
+			using var con = new MySqlConnection(serverConfiguration);
+			con.Open();
+
+			//setup our query
+			string sql = "SELECT * FROM items INNER JOIN itemLocationCount ON items.id = itemLocationCount.itemId WHERE `locationId` = 1 AND itemLocationCount.totalCount > 0";
+			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
+
+			//Creates an instance of our cmd result that can be read in C#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			//init our return list
+			var results = new List<Item>();
+
+			while (reader.Read())
+			{
+				var item = new Item(reader.GetInt32(0))
+				{
+					ID = reader.GetInt32(0),
+					Name = reader.GetString(1),
+					ImageURL = reader.GetString(2),
+					ItemType = reader.GetString(3),
+					Description = reader.GetString(4),
+					GroupType = reader.GetString(5)
+
+				};
+
+				results.Add(item);
+			}
+
+			return results;
+
+		}
+
+
+		public static List<Item> GetAllPouchItems()
+		{
+
+			//establish connection to db
+			using var con = new MySqlConnection(serverConfiguration);
+			con.Open();
+
+			//setup our query
+			string sql = "SELECT * FROM items INNER JOIN itemLocationCount ON items.id = itemLocationCount.itemId WHERE `locationId` = 2 AND itemLocationCount.totalCount > 0";
+			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
+
+			//Creates an instance of our cmd result that can be read in C#
+			using MySqlDataReader reader = cmd.ExecuteReader();
+
+			//init our return list
+			var results = new List<Item>();
+
+			while (reader.Read())
+			{
+				var item = new Item(reader.GetInt32(0))
+				{
+					ID = reader.GetInt32(0),
+					Name = reader.GetString(1),
+					ImageURL = reader.GetString(2),
+					ItemType = reader.GetString(3),
+					Description = reader.GetString(4),
+					GroupType = reader.GetString(5)
+
+				};
+
+				results.Add(item);
+			}
+
+			return results;
 
 		}
 
 
 		
 
-		public static int GetAllBunkerItems(string name)
+		public static List<Item> GetAllBunkerItems()
 		{
 
 			//establish connection to db
@@ -419,27 +620,32 @@ namespace MonsterHunterInventory.Services
 			con.Open();
 
 			//setup our query
-			string sql = "SELECT * FROM items WHERE bunkercount > 0;";
+			string sql = "SELECT * FROM items INNER JOIN itemLocationCount ON items.id = itemLocationCount.itemId WHERE `locationId` = 3 AND itemLocationCount.totalCount > 0";
 			using var cmd = new MySqlCommand(sql, con); //preform this new cmd which is sql & do it in
-
-			cmd.Parameters.AddWithValue("@name", name);
 
 			//Creates an instance of our cmd result that can be read in C#
 			using MySqlDataReader reader = cmd.ExecuteReader();
 
-			int bunkercount = 0;
+			//init our return list
+			var results = new List<Item>();
 
 			while (reader.Read())
 			{
-				bunkercount = reader.GetInt32(8);
+				var item = new Item(reader.GetInt32(0))
+				{
+					ID = reader.GetInt32(0),
+					Name = reader.GetString(1),
+					ImageURL = reader.GetString(2),
+					ItemType = reader.GetString(3),
+					Description = reader.GetString(4),
+					GroupType = reader.GetString(5)
 
+				};
+
+				results.Add(item);
 			}
 
-			con.Close();
-
-
-
-			return bunkercount;
+			return results;
 
 		}
 
