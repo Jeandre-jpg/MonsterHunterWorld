@@ -5007,7 +5007,7 @@ textarea.form-control-lg {
 .card-img,
 .card-img-top,
 .card-img-bottom {
-    width: 100%;
+    width: 200px;
 }
 
 .card-img,
@@ -6745,7 +6745,7 @@ textarea.form-control-lg {
         padding: 0;
         margin-right: 3px;
         margin-left: 3px;
-        text-indent: -999px;
+     
         cursor: pointer;
         background-color: #fff;
         background-clip: padding-box;
@@ -12334,4 +12334,17 @@ section.cta {
     background-repeat: no-repeat;
     background-size: contain;
     background-image: url(/img/card_main.png);
+}
+
+#container {
+    box-shadow: 0 15px 30px 1px green;
+    background: black;
+    text-align: center;
+    justify-content: center;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 5em auto;
+    padding: 20px;
+    height: 300px;
+    width: 400px;
 }

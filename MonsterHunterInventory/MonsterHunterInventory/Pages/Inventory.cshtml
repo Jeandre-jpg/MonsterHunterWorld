@@ -47,490 +47,100 @@
             <a class="bn31" id="seeds" style="height: 150px; margin-bottom: 100px; margin-left: 100px; "><span class="bn31span">Seeds</span></a>
 
         </div>
-        <div class="col-4">
+        
+        <div class="col-10" style="padding-top: -500px; float: left;">
+            @foreach (var item in Model.allItems)
+            {
 
-            <div class="artificialcon">
 
 
+        @if (item.ItemType == "Artificial")
+        {
+        <div id="container">
+            <div class="artificialcon" style="float: left; margin-right: 300px;">
 
-                @foreach (var item in Model.allItems)
-                {
 
-                    @if (item.ItemType == "Artificial")
-                    {
-                <div class="card artificialimg"  style="width: 350px; height: 350px; margin-bottom: 100px; ">
+                <div class="card artificialimg" style="width: 450px; height: 450px; margin-bottom: 100px; ">
                     <img src="@item.ImageURL" />
                 </div>
-                    }
-
-
-                }
-
-
-
             </div>
 
-            <div class="creaturescon container-fluid">
+
+            <div class="artificialmain" style="margin-bottom: 250px; float: left; ">
+                <div class="card-body" style="margin: 20px; padding: 50px; color: white; width: 700px; height: 700px; background-color: black; margin-bottom: 200px;">
+
+
+                    <div class="card-body" style="margin: 20px; padding: 50px; color: white; width: 700px; height: 700px; background-color: black; margin-bottom: 200px;">
+
+                        <div class="hero-text">
+                            <h1 style="font-size:50px">@item.Name</h1>
+                        </div>
+                        <h1>Category:</h1>
+                        <h2 class="card-title">@item.ItemType</h2>
+                        <h1>Item Type:</h1>
+                        <h2 class="card-title">@item.GroupType</h2>
+                        <h6 class="card-title">@item.Description</h6>
+                        <h1>Amount:</h1>
+                        <p class="card-text">@item.ItemCount</p>
+                        <div class="col">
+
+                            <form method="post" asp-page-handler="homebase">
+                                <h1>Homebase Count:</h1>
+                                <input class="form-control" name="count" value="@item.HomebaseCount" type="number" min="0" step="1" />
+                                <input type="hidden" name="itemId" value="@item.ID" style="background: black; border-color: green;" />
+
+                                <button class="btn31" style="height: 70px; margin-top: 50px;"><span class="bn31span">Update</span></button>
+                            </form>
+
+                        </div>
+
+                        <div class="col">
+
+                            <form method="post" asp-page-handler="bunker">
+                                <h1>Bunker Count:</h1>
+                                <input class="form-control" name="count" value="@item.BunkerCount" type="number" min="0" step="1" />
+                                <input type="hidden" name="itemId" value="@item.ID" style="background: black; border-color: green;" />
+
+                                <button class="btn31" style="height: 70px; margin-top: 50px;"><span class="bn31span">Update</span></button>
+                            </form>
+                        </div>
 
 
 
-                @foreach (var item in Model.allItems)
-                {
+                        <div class="col">
 
-                    @if (item.ItemType == "Creatures")
-                    {
+                            <form method="post" asp-page-handler="pouch">
+                                <h1>Pouch Count:</h1>
+                                <input class="form-control" name="count" value="@item.PouchCount" type="number" min="0" step="1" />
+                                <input type="hidden" name="itemId" value="@item.ID"  style="background: black; border-color: green;"/>
+
+                                <button class="btn31" style="height: 70px; margin-top: 50px;"><span class="bn31span">Update</span></button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>}
+
+                        @if (item.ItemType == "Creatures")
+                        {
+        <div id="container">
+
+            <div class="creaturescon" style="float: left; margin-right: 300px;">
+
+
+
                 <div class="card" style="width: 350px; height: 350px; margin-bottom: 100px; ">
                     <img src="@item.ImageURL" />
                 </div>
-                    }
-
-
-                }
-
-
-
             </div>
 
-            <div class="elixirscon container-fluid">
+            <div class="creaturesmain" style="margin-bottom: 250px; float: left; ">
 
 
 
-                @foreach (var item in Model.allItems)
-                {
 
-                    @if (item.ItemType == "Elixirs")
-                    {
-                <div class="card" style="width: 350px; height: 450px; margin-bottom: 100px; ">
-                    <img src="@item.ImageURL" />
-                </div>
-                    }
-
-
-                }
-
-
-
-            </div>
-
-            <div class="herbscon container-fluid">
-
-
-
-                @foreach (var item in Model.allItems)
-                {
-
-                    @if (item.ItemType == "Herbs")
-                    {
-                <div class="card" style="width: 350px; height: 350px; margin-bottom: 100px; ">
-                    <img src="@item.ImageURL" />
-                </div>
-                    }
-
-
-                }
-
-
-
-            </div>
-
-            <div class="insectscon container-fluid">
-
-
-
-                @foreach (var item in Model.allItems)
-                {
-
-                    @if (item.ItemType == "Insects")
-                    {
-                <div class="card" style="width: 350px; height: 350px; margin-bottom: 100px; ">
-                    <img src="@item.ImageURL" />
-                </div>
-                    }
-
-
-                }
-
-
-
-            </div>
-
-            <div class="seedscon container-fluid">
-
-
-
-                @foreach (var item in Model.allItems)
-                {
-
-                    @if (item.ItemType == "Seeds")
-                    {
-                        <div class="card" style="width: 350px; height: 350px; margin-bottom: 100px; ">
-                            <img src="@item.ImageURL" />
-                        </div>
-                    }
-
-
-                }
-
-
-
-            </div>
-        </div>
-
-
-
-        <div class="col-4">
-            <div class="artificialmain" style="margin-bottom: 150px;">
-
-
-
-
-                @foreach (var item in Model.allItems)
-                {
-
-                    @if (item.ItemType == "Artificial")
-                    {
-                        <div class="card-body" style="margin: 20px; padding: 50px; color: white; width: 700px; height: 700px; background-color: black; margin-bottom: 200px;">
-
-                            <div class="hero-text">
-                                <h1 style="font-size:50px">@item.Name</h1>
-                            </div>
-                            <h1>Category:</h1>
-                            <h2 class="card-title">@item.ItemType</h2>
-                            <h1>Item Type:</h1>
-                            <h2 class="card-title">@item.GroupType</h2>
-                            <h6 class="card-title">@item.Description</h6>
-                            <h1>Amount:</h1>
-                            <p class="card-text">@item.ItemCount</p>
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="homebase">
-                                    <h1>Homebase Count:</h1>
-                                    <input class="form-control" name="count" value="@item.HomebaseCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-
-                            </div>
-
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="bunker">
-                                    <h1>Bunker Count:</h1>
-                                    <input class="form-control" name="count" value="@item.BunkerCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-                            </div>
-
-
-
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="pouch">
-                                    <h1>Pouch Count:</h1>
-                                    <input class="form-control" name="count" value="@item.PouchCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-
-                            </div>
-                        </div>
-                    }
-
-
-                }
-
-
-
-            </div>
-
-            <div class="creaturesmain">
-
-
-
-
-                @foreach (var item in Model.allItems)
-                {
-
-                    @if (item.ItemType == "Creatures")
-                    {
-                        <div class="card-body" style="margin: 20px; padding: 50px; color: white; width: 700px; height: 700px; background-color: black; margin-bottom: 200px;">
-
-                            <div class="hero-text">
-                                <h1 style="font-size:50px">@item.Name</h1>
-                            </div>
-                            <h1>Category:</h1>
-                            <h2 class="card-title">@item.ItemType</h2>
-                            <h1>Item Type:</h1>
-                            <h2 class="card-title">@item.GroupType</h2>
-                            <h6 class="card-title">@item.Description</h6>
-                            <h1>Amount:</h1>
-                            <p class="card-text">@item.ItemCount</p>
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="homebase">
-                                    <h1>Homebase Count:</h1>
-                                    <input class="form-control" name="count" value="@item.HomebaseCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-
-                            </div>
-
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="bunker">
-                                    <h1>Bunker Count:</h1>
-                                    <input class="form-control" name="count" value="@item.BunkerCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-                            </div>
-
-
-
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="pouch">
-                                    <h1>Pouch Count:</h1>
-                                    <input class="form-control" name="count" value="@item.PouchCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-
-                            </div>
-                        </div>
-                    }
-
-
-                }
-
-
-
-            </div>
-
-
-            <div class="elixirsmain">
-
-
-
-
-                @foreach (var item in Model.allItems)
-                {
-
-                    @if (item.ItemType == "Elixirs")
-                    {
-                        <div class="card-body" style="margin: 20px; padding: 50px; color: white; width: 700px; height: 700px; background-color: black; margin-bottom: 200px;">
-
-                            <div class="hero-text">
-                                <h1 style="font-size:50px">@item.Name</h1>
-                            </div>
-                            <h1>Category:</h1>
-                            <h2 class="card-title">@item.ItemType</h2>
-                            <h1>Item Type:</h1>
-                            <h2 class="card-title">@item.GroupType</h2>
-                            <h6 class="card-title">@item.Description</h6>
-                            <h1>Amount:</h1>
-                            <p class="card-text">@item.ItemCount</p>
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="homebase">
-                                    <h1>Homebase Count:</h1>
-                                    <input class="form-control" name="count" value="@item.HomebaseCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-
-                            </div>
-
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="bunker">
-                                    <h1>Bunker Count:</h1>
-                                    <input class="form-control" name="count" value="@item.BunkerCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-                            </div>
-
-
-
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="pouch">
-                                    <h1>Pouch Count:</h1>
-                                    <input class="form-control" name="count" value="@item.PouchCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-
-                            </div>
-                        </div>
-                    }
-
-
-                }
-
-
-
-            </div>
-
-
-            <div class="herbsmain">
-
-
-
-
-                @foreach (var item in Model.allItems)
-                {
-
-                    @if (item.ItemType == "Herbs")
-                    {
-                        <div class="card-body" style="margin: 20px; padding: 50px; color: white; width: 700px; height: 700px; background-color: black; margin-bottom: 200px;">
-
-                            <div class="hero-text">
-                                <h1 style="font-size:50px">@item.Name</h1>
-                            </div>
-                            <h1>Category:</h1>
-                            <h2 class="card-title">@item.ItemType</h2>
-                            <h1>Item Type:</h1>
-                            <h2 class="card-title">@item.GroupType</h2>
-                            <h6 class="card-title">@item.Description</h6>
-                            <h1>Amount:</h1>
-                            <p class="card-text">@item.ItemCount</p>
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="homebase">
-                                    <h1>Homebase Count:</h1>
-                                    <input class="form-control" name="count" value="@item.HomebaseCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-
-                            </div>
-
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="bunker">
-                                    <h1>Bunker Count:</h1>
-                                    <input class="form-control" name="count" value="@item.BunkerCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-                            </div>
-
-
-
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="pouch">
-                                    <h1>Pouch Count:</h1>
-                                    <input class="form-control" name="count" value="@item.PouchCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-
-                            </div>
-                        </div>
-                    }
-
-
-                }
-
-
-
-            </div>
-
-
-            <div class="insectsmain">
-
-
-
-
-                @foreach (var item in Model.allItems)
-                {
-
-                    @if (item.ItemType == "Insects")
-                    {
-                        <div class="card-body" style="margin: 20px; padding: 50px; color: white; width: 700px; height: 700px; background-color: black; margin-bottom: 200px;">
-
-                            <div class="hero-text">
-                                <h1 style="font-size:50px">@item.Name</h1>
-                            </div>
-                            <h1>Category:</h1>
-                            <h2 class="card-title">@item.ItemType</h2>
-                            <h1>Item Type:</h1>
-                            <h2 class="card-title">@item.GroupType</h2>
-                            <h6 class="card-title">@item.Description</h6>
-                            <h1>Amount:</h1>
-                            <p class="card-text">@item.ItemCount</p>
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="homebase">
-                                    <h1>Homebase Count:</h1>
-                                    <input class="form-control" name="count" value="@item.HomebaseCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-
-                            </div>
-
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="bunker">
-                                    <h1>Bunker Count:</h1>
-                                    <input class="form-control" name="count" value="@item.BunkerCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-                            </div>
-
-
-
-                            <div class="col">
-
-                                <form method="post" asp-page-handler="pouch">
-                                    <h1>Pouch Count:</h1>
-                                    <input class="form-control" name="count" value="@item.PouchCount" type="number" min="0" step="1" />
-                                    <input type="hidden" name="itemId" value="@item.ID" />
-
-                                    <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                                </form>
-
-                            </div>
-                        </div>
-                    }
-
-
-                }
-
-
-
-            </div>
-
-
-            <div class="seedsmain">
-
-
-
-
-                @foreach (var item in Model.allItems)
-                {
-
-                    @if (item.ItemType == "Seeds")
-                    {
                 <div class="card-body" style="margin: 20px; padding: 50px; color: white; width: 700px; height: 700px; background-color: black; margin-bottom: 200px;">
 
                     <div class="hero-text">
@@ -543,15 +153,15 @@
                     <h6 class="card-title">@item.Description</h6>
                     <h1>Amount:</h1>
                     <p class="card-text">@item.ItemCount</p>
-                   <div class="col">
+                    <div class="col">
 
-                       <form method="post" asp-page-handler="homebase">
-                           <h1>Homebase Count:</h1>
-                           <input class="form-control" name="count" value="@item.HomebaseCount" type="number" min="0" step="1" />
-                           <input type="hidden" name="itemId" value="@item.ID" />
+                        <form method="post" asp-page-handler="homebase">
+                            <h1>Homebase Count:</h1>
+                            <input class="form-control" name="count" value="@item.HomebaseCount" type="number" min="0" step="1" />
+                            <input type="hidden" name="itemId" value="@item.ID" />
 
-                           <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
-                       </form>
+                            <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
+                        </form>
 
                     </div>
 
@@ -579,158 +189,403 @@
                         </form>
 
                     </div>
-                </div>
-                    }
-
-
-                }
-
-
-
-            </div>
-
-        </div>
-    </div>
-   
-
-
-        @*@foreach (var item in Model.allItems)
-        {
-
-
-            <div class="card" style="width: 50px;">
-                <div class="card-img-top" src="@item.ImageURL" alt="Card Image Cap"></div>
-            </div>
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-img-top" src="@item.ImageURL" alt="Card Image Cap"></div>
-                    <h5 class="card-title">@item.Name</h5>
-                    <h6 class="card-title">@item.ItemType</h6>
-                    <h6 class="card-title">@item.GroupType</h6>
-                    <p class="card-text">@item.count</p>
 
                 </div>
             </div>
+        </div>}
 
-        }*@
-
-        <!-- JavaScript Libraries -->
-        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-
-
-        <!-- Template Javascript -->
-        <script src="js/site.js"></script>
-
-        <script>
-            $(function () {
-                $('.container-2').show();
-                $('.container-3').show();
-              
+                                        @if (item.ItemType == "Elixirs")
+                                        {
+                        <div id="container">
+                            <div class="elixirscon" style="float: left; margin-right: 300px;">
 
 
-            $("#artificial").click(function () {
-                $('.artificialcon').show();
-                $('.creaturescon').hide();
-                $('.elixirscon').hide();
-                $('.herbscon').hide();
-                $('.insectscon').hide();
-                $('.seedscon').hide();
-                $('.artificialmain').show();
-                $('.creaturesmain').hide();
-                $('.elixirsmain').hide();
-                $('.herbsmain').hide();
-                $('.insectsmain').hide();
-                $('.seedsmain').hide();  
-            });
-
-                $("#creatures").click(function () {
-                    $('.artificialcon').hide();
-                    $('.creaturescon').show();
-                    $('.elixirscon').hide();
-                    $('.herbscon').hide();
-                    $('.insectscon').hide();
-                    $('.seedscon').hide();
-                    $('.artificialmain').hide();
-                    $('.creaturesmain').show();
-                    $('.elixirsmain').hide();
-                    $('.herbsmain').hide();
-                    $('.insectsmain').hide();
-                    $('.seedsmain').hide(); 
-
-                });
-
-                $("#elixirs").click(function () {
-                    $('.artificialcon').hide();
-                    $('.creaturescon').hide();
-                    $('.elixirscon').show();
-                    $('.herbscon').hide();
-                    $('.insectscon').hide();
-                    $('.seedscon').hide();
-                    $('.artificialmain').hide();
-                    $('.creaturesmain').hide();
-                    $('.elixirsmain').show();
-                    $('.herbsmain').hide();
-                    $('.insectsmain').hide();
-                    $('.seedsmain').hide(); 
-
-                });
-
-                $("#herbs").click(function () {
-                    $('.artificialcon').hide();
-                    $('.creaturescon').hide();
-                    $('.elixirscon').hide();
-                    $('.herbscon').show();
-                    $('.insectscon').hide();
-                    $('.seedscon').hide();
-                    $('.artificialmain').hide();
-                    $('.creaturesmain').hide();
-                    $('.elixirsmain').hide();
-                    $('.herbsmain').show();
-                    $('.insectsmain').hide();
-                    $('.seedsmain').hide(); 
-
-                });
 
 
-                $("#insects").click(function () {
-                    $('.artificialcon').hide();
-                    $('.creaturescon').hide();
-                    $('.elixirscon').hide();
-                    $('.herbscon').hide();
-                    $('.insectscon').show();
-                    $('.seedscon').hide();
-                    $('.artificialmain').hide();
-                    $('.creaturesmain').hide();
-                    $('.elixirsmain').hide();
-                    $('.herbsmain').hide();
-                    $('.insectsmain').show();
-                    $('.seedsmain').hide(); 
 
-                });
 
-                $("#seeds").click(function () {
-                    $('.artificialcon').hide();
-                    $('.creaturescon').hide();
-                    $('.elixirscon').hide();
-                    $('.herbscon').hide();
-                    $('.insectscon').hide();
-                    $('.seedscon').show();
-                    $('.artificialmain').hide();
-                    $('.creaturesmain').hide();
-                    $('.elixirsmain').hide();
-                    $('.herbsmain').hide();
-                    $('.insectsmain').hide();
-                    $('.seedsmain').show(); 
+                                <div class="card" style="width: 350px; height: 450px; margin-bottom: 100px; ">
+                                    <img src="@item.ImageURL" />
+                                </div>
+                            </div>
+                            <div class="elixirsmain" style="margin-bottom: 250px; float: left; ">
 
-                });
- 
-            });
 
-           
 
-    </script>
+
+
+                                <div class="card-body" style="margin: 20px; padding: 50px; color: white; width: 700px; height: 700px; background-color: black; margin-bottom: 200px;">
+
+                                    <div class="hero-text">
+                                        <h1 style="font-size:50px">@item.Name</h1>
+                                    </div>
+                                    <h1>Category:</h1>
+                                    <h2 class="card-title">@item.ItemType</h2>
+                                    <h1>Item Type:</h1>
+                                    <h2 class="card-title">@item.GroupType</h2>
+                                    <h6 class="card-title">@item.Description</h6>
+                                    <h1>Amount:</h1>
+                                    <p class="card-text">@item.ItemCount</p>
+                                    <div class="col">
+
+                                        <form method="post" asp-page-handler="homebase">
+                                            <h1>Homebase Count:</h1>
+                                            <input class="form-control" name="count" value="@item.HomebaseCount" type="number" min="0" step="1" />
+                                            <input type="hidden" name="itemId" value="@item.ID" />
+
+                                            <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
+                                        </form>
+
+                                    </div>
+
+                                    <div class="col">
+
+                                        <form method="post" asp-page-handler="bunker">
+                                            <h1>Bunker Count:</h1>
+                                            <input class="form-control" name="count" value="@item.BunkerCount" type="number" min="0" step="1" />
+                                            <input type="hidden" name="itemId" value="@item.ID" />
+                                            <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
+                                        </form>
+                                    </div>
+
+
+
+                                    <div class="col">
+
+                                        <form method="post" asp-page-handler="pouch">
+                                            <h1>Pouch Count:</h1>
+                                            <input class="form-control" name="count" value="@item.PouchCount" type="number" min="0" step="1" />
+                                            <input type="hidden" name="itemId" value="@item.ID" />
+                                            <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
+                                        </form>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>}
+
+
+
+
+
+                                                        @if (item.ItemType == "Herbs")
+                                                        {
+                                        <div id="container">
+                                            <div class="herbscon" style="float: left; margin-right: 300px;">
+                                                <div class="card" style="width: 350px; height: 350px; margin-bottom: 100px; ">
+                                                    <img src="@item.ImageURL" />
+                                                </div>
+                                            </div>
+
+                                            <div class="herbsmain" style="margin-bottom: 250px; float: left; ">
+
+
+                                                <div class="card-body" style="margin: 20px; padding: 50px; color: white; width: 700px; height: 700px; background-color: black; margin-bottom: 200px;">
+
+                                                    <div class="hero-text">
+                                                        <h1 style="font-size:50px">@item.Name</h1>
+                                                    </div>
+                                                    <h1>Category:</h1>
+                                                    <h2 class="card-title">@item.ItemType</h2>
+                                                    <h1>Item Type:</h1>
+                                                    <h2 class="card-title">@item.GroupType</h2>
+                                                    <h6 class="card-title">@item.Description</h6>
+                                                    <h1>Amount:</h1>
+                                                    <p class="card-text">@item.ItemCount</p>
+                                                    <div class="col">
+
+                                                        <form method="post" asp-page-handler="homebase">
+                                                            <h1>Homebase Count:</h1>
+                                                            <input class="form-control" name="count" value="@item.HomebaseCount" type="number" min="0" step="1" />
+                                                            <input type="hidden" name="itemId" value="@item.ID" />
+
+                                                            <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
+                                                        </form>
+
+                                                    </div>
+
+                                                    <div class="col">
+
+                                                        <form method="post" asp-page-handler="bunker">
+                                                            <h1>Bunker Count:</h1>
+                                                            <input class="form-control" name="count" value="@item.BunkerCount" type="number" min="0" step="1" />
+                                                            <input type="hidden" name="itemId" value="@item.ID" />
+
+                                                            <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
+                                                        </form>
+                                                    </div>
+
+
+
+                                                    <div class="col">
+
+                                                        <form method="post" asp-page-handler="pouch">
+                                                            <h1>Pouch Count:</h1>
+                                                            <input class="form-control" name="count" value="@item.PouchCount" type="number" min="0" step="1" />
+                                                            <input type="hidden" name="itemId" value="@item.ID" />
+
+                                                            <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
+                                                        </form>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>}
+
+                                                                        @if (item.ItemType == "Insects")
+                                                                        {
+                                                        <div id="container">
+                                                            <div class="insectscon" style="float: left; margin-right: 300px;">
+
+
+
+
+
+                                                                <div class="card" style="width: 350px; height: 350px; margin-bottom: 100px; ">
+                                                                    <img src="@item.ImageURL" />
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="insectsmain" style="margin-bottom: 250px; float: left; ">
+
+                                                                <div class="card-body" style="margin: 20px; padding: 50px; color: white; width: 700px; height: 700px; background-color: black; margin-bottom: 200px;">
+
+                                                                    <div class="hero-text">
+                                                                        <h1 style="font-size:50px">@item.Name</h1>
+                                                                    </div>
+                                                                    <h1>Category:</h1>
+                                                                    <h2 class="card-title">@item.ItemType</h2>
+                                                                    <h1>Item Type:</h1>
+                                                                    <h2 class="card-title">@item.GroupType</h2>
+                                                                    <h6 class="card-title">@item.Description</h6>
+                                                                    <h1>Amount:</h1>
+                                                                    <p class="card-text">@item.ItemCount</p>
+                                                                    <div class="col">
+
+                                                                        <form method="post" asp-page-handler="homebase">
+                                                                            <h1>Homebase Count:</h1>
+                                                                            <input class="form-control" name="count" value="@item.HomebaseCount" type="number" min="0" step="1" />
+                                                                            <input type="hidden" name="itemId" value="@item.ID" />
+
+                                                                            <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
+                                                                        </form>
+
+                                                                    </div>
+
+                                                                    <div class="col">
+
+                                                                        <form method="post" asp-page-handler="bunker">
+                                                                            <h1>Bunker Count:</h1>
+                                                                            <input class="form-control" name="count" value="@item.BunkerCount" type="number" min="0" step="1" />
+                                                                            <input type="hidden" name="itemId" value="@item.ID" />
+
+                                                                            <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
+                                                                        </form>
+                                                                    </div>
+
+
+
+                                                                    <div class="col">
+
+                                                                        <form method="post" asp-page-handler="pouch">
+                                                                            <h1>Pouch Count:</h1>
+                                                                            <input class="form-control" name="count" value="@item.PouchCount" type="number" min="0" step="1" />
+                                                                            <input type="hidden" name="itemId" value="@item.ID" />
+
+                                                                            <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
+                                                                        </form>
+
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </div>}
+
+
+
+
+                                                                                        @if (item.ItemType == "Seeds")
+
+                                                                                        {
+                                                                        <div id="container">
+                                                                            <div class="seedscon" style="float: left; margin-right: 300px;">
+
+                                                                                <div class="card" style="width: 350px; height: 350px; margin-bottom: 100px; ">
+                                                                                    <img src="@item.ImageURL" />
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                            <div class="seedsmain" style="margin-bottom: 250px; float: left; ">
+
+
+
+
+                                                                                <div class="card-body" style="margin: 20px; padding: 50px; color: white; width: 700px; height: 700px; background-color: black; margin-bottom: 200px;">
+
+                                                                                    <div class="hero-text">
+                                                                                        <h1 style="font-size:50px">@item.Name</h1>
+                                                                                    </div>
+                                                                                    <h1>Category:</h1>
+                                                                                    <h2 class="card-title">@item.ItemType</h2>
+                                                                                    <h1>Item Type:</h1>
+                                                                                    <h2 class="card-title">@item.GroupType</h2>
+                                                                                    <h6 class="card-title">@item.Description</h6>
+                                                                                    <h1>Amount:</h1>
+                                                                                    <p class="card-text">@item.ItemCount</p>
+                                                                                    <div class="col">
+
+                                                                                        <form method="post" asp-page-handler="homebase">
+                                                                                            <h1>Homebase Count:</h1>
+                                                                                            <input class="form-control" name="count" value="@item.HomebaseCount" type="number" min="0" step="1" />
+                                                                                            <input type="hidden" name="itemId" value="@item.ID" />
+
+                                                                                            <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
+                                                                                        </form>
+
+                                                                                    </div>
+
+                                                                                    <div class="col">
+
+                                                                                        <form method="post" asp-page-handler="bunker">
+                                                                                            <h1>Bunker Count:</h1>
+                                                                                            <input class="form-control" name="count" value="@item.BunkerCount" type="number" min="0" step="1" />
+                                                                                            <input type="hidden" name="itemId" value="@item.ID" />
+
+                                                                                            <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
+                                                                                        </form>
+                                                                                    </div>
+
+
+
+                                                                                    <div class="col">
+
+                                                                                        <form method="post" asp-page-handler="pouch">
+                                                                                            <h1>Pouch Count:</h1>
+                                                                                            <input class="form-control" name="count" value="@item.PouchCount" type="number" min="0" step="1" />
+                                                                                            <input type="hidden" name="itemId" value="@item.ID" style="background: black; border-color: green;"/>
+
+                                                                                            <button class="btn31" style="height: 70px; margin-top: 50px;">Update</button>
+                                                                                        </form>
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            </div>}
+                                                                            }
+
+                                                                        </div>
+                                                                                        </div>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script> <!-- Template Javascript -->
+<script src="js/site.js"></script>
+
+<script>$(function () {
+$('.container-2').show();
+$('.container-3').show();
+
+
+
+$("#artificial").click(function () {
+    $('.artificialcon').show();
+    $('.creaturescon').hide();
+    $('.elixirscon').hide();
+    $('.herbscon').hide();
+    $('.insectscon').hide();
+    $('.seedscon').hide();
+    $('.artificialmain').show();
+    $('.creaturesmain').hide();
+    $('.elixirsmain').hide();
+    $('.herbsmain').hide();
+    $('.insectsmain').hide();
+    $('.seedsmain').hide();
+});
+
+$("#creatures").click(function () {
+    $('.artificialcon').hide();
+    $('.creaturescon').show();
+    $('.elixirscon').hide();
+    $('.herbscon').hide();
+    $('.insectscon').hide();
+    $('.seedscon').hide();
+    $('.artificialmain').hide();
+    $('.creaturesmain').show();
+    $('.elixirsmain').hide();
+    $('.herbsmain').hide();
+    $('.insectsmain').hide();
+    $('.seedsmain').hide();
+
+});
+
+$("#elixirs").click(function () {
+    $('.artificialcon').hide();
+    $('.creaturescon').hide();
+    $('.elixirscon').show();
+    $('.herbscon').hide();
+    $('.insectscon').hide();
+    $('.seedscon').hide();
+    $('.artificialmain').hide();
+    $('.creaturesmain').hide();
+    $('.elixirsmain').show();
+    $('.herbsmain').hide();
+    $('.insectsmain').hide();
+    $('.seedsmain').hide();
+
+});
+
+$("#herbs").click(function () {
+    $('.artificialcon').hide();
+    $('.creaturescon').hide();
+    $('.elixirscon').hide();
+    $('.herbscon').show();
+    $('.insectscon').hide();
+    $('.seedscon').hide();
+    $('.artificialmain').hide();
+    $('.creaturesmain').hide();
+    $('.elixirsmain').hide();
+    $('.herbsmain').show();
+    $('.insectsmain').hide();
+    $('.seedsmain').hide();
+
+});
+
+
+$("#insects").click(function () {
+    $('.artificialcon').hide();
+    $('.creaturescon').hide();
+    $('.elixirscon').hide();
+    $('.herbscon').hide();
+    $('.insectscon').show();
+    $('.seedscon').hide();
+    $('.artificialmain').hide();
+    $('.creaturesmain').hide();
+    $('.elixirsmain').hide();
+    $('.herbsmain').hide();
+    $('.insectsmain').show();
+    $('.seedsmain').hide();
+
+});
+
+$("#seeds").click(function () {
+    $('.artificialcon').hide();
+    $('.creaturescon').hide();
+    $('.elixirscon').hide();
+    $('.herbscon').hide();
+    $('.insectscon').hide();
+    $('.seedscon').show();
+    $('.artificialmain').hide();
+    $('.creaturesmain').hide();
+    $('.elixirsmain').hide();
+    $('.herbsmain').hide();
+    $('.insectsmain').hide();
+    $('.seedsmain').show();
+
+});
+
+});</script>
 
         <style>
             .card-body {
@@ -742,9 +597,9 @@
                 background-color: black;
             }
         </style>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+                        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        <script src="js/index.js"></script>
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+                                        <script src="js/index.js"></script>
+                                                        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

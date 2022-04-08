@@ -42,22 +42,23 @@
         {
 
             <div class="col-3">
-                <div class="card @(product.isCraftable ? "border-success" : "bg-black")">
+                <div id="#container @(product.isCraftable ? "border-success" : "bg-black")" style="box-shadow: 0 15px 30px 1px green; background: black; color: white; /* margin-top: 20px; */ text-align: center; border-radius: 5px; overflow: hidden; margin: 5em auto; padding: 70px; height: 900px; width: 400px;">
                     <img class="card-img-top" src="@product.ImageURL" alt="Card Image Cap">
-                    <div class="card-body">
-                        <div class="card-img-top" src="@product.ImageURL" alt="Card Image Cap"></div>
-                        <h5 class="card-title">
+                    <div id="#container">
+                        <div class="card-img-top" src="@product.ImageURL" alt="Card Image Cap" style="width: 100px; height: 100px;"></div>
+                        <h1 class="card-title" style="padding-top: 20px;">
                             <span>@product.Name </span>
                             <span style="float:right;">@product.ItemCount</span>
-                        </h5>
-                        <h6 class="card-title">@product.ProductType</h6>
+                        </h1>
+                        <h3 class="card-title">@product.ProductType</h3>
                         <p>Ingredients:</p>
 
                         @foreach (var ingredient in product.Ingredients)
                         {
                             if (ingredient != "")
                             {
-                    <p style="padding:10px; margin:10px; margin-left:20px;">@ingredient</p> @*<span style="float:right;">@product.ItemOneId</span>
+                    <p style="padding:10px; margin:10px; margin-left:20px; height:auto; width: 150px;">@ingredient</p>
+                    @*<span style="float:right;">@product.ItemOneId</span>
 
                             <span style="float:right;">@product.ItemTwoId</span>*@
 
@@ -65,7 +66,7 @@
                                                   asp-page-handler="craft"
                                                   asp-route-name="@product.Name"
                                                   asp-route-count="@product.Count">
-                                                >
+                                                
 
                                                 @{ foreach (var ingredient in product.Ingredients)
                                                                             {

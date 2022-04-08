@@ -6787,7 +6787,7 @@ textarea.form-control-lg {
         padding: 0;
         margin-right: 3px;
         margin-left: 3px;
-        text-indent: -999px;
+     
         cursor: pointer;
         background-color: #fff;
         background-clip: padding-box;
@@ -12363,8 +12363,8 @@ section.cta {
     }
 
 p {
-    text-indent: 50px;
-    text-align: justify;
+  
+    text-align: left;
     letter-spacing: 3px;
     color: white;
 
