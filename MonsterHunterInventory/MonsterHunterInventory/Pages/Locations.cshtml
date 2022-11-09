@@ -31,92 +31,117 @@
 </head>
 
 <body style="background-color: black; text-align: left; padding-top: -1.5rem;">
+    <header>
+        <nav class="navbar navbar-expand-lg sticky-top py-lg-0 px-lg-5 wow fadeIn" style="justify-content:center; background-color: black;">
+            <a href="SignIn.html" class="navbar-brand ms-4 ms-lg-0">
+                <h1 class="mb-0 text-uppercase" style="color: #37F230;"><img src="img/logo_home.png" style="width: 150px; height:150px; padding:50px;" />The Inventory</h1>
+            </a>
+            <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <div class="navbar-nav ms-auto p-4 p-lg-0">
+                    <ul class="navbar-nav ms-auto me-4 my-3 my-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-success" asp-area="" asp-page="/Home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-success" asp-area="" asp-page="/Inventory">Inventory</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-success" asp-area="" asp-page="/Craft">Craft</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-success" asp-area="" asp-page="/Locations">Locations</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-success" asp-area="" asp-page="/Index">Sign Out</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
 
+
+
+    </header>
     <div class="row">
         <div class="col-2" style="padding-top: 150px;">
-            <a class="bn31" id="homebase" style=" height: 150px; margin-bottom: 100px; margin-left: 100px;"><span class="bn31span">Home Base</span></a>
+            <a class="bn31" id="homebase" style=" height: 60px; margin-bottom: 25px; margin-left: 100px; color: white;"><span class="bn31span">Home Base</span></a>
 
-            <a class="bn31" id="pouch" style="height: 150px; margin-bottom: 100px; margin-left: 100px; "><span class="bn31span">Bunker</span></a>
+            <a class="bn31" id="bunker" style=" height: 60px; margin-bottom: 25px; margin-left: 100px; color: white;"><span class="bn31span">Pouch</span></a>
 
-            <a class="bn31" id="bunker" style="height: 150px; margin-bottom: 100px; margin-left: 100px; "><span class="bn31span">Pouch</span></a>
+            <a class="bn31" id="pouch" style=" height: 60px; margin-bottom: 25px; margin-left: 100px; color: white;"><span class="bn31span">Bunker</span></a>
 
 
         </div>
         @foreach (var location in Model.allLocations)
-            {
-            <div class="col-6 offset-1 container-@location.ID">
+        {
+<div class="col-6 offset-1 container-@location.ID">
 
-                <div class="mb-5 mb-lg-0 text-center text-lg-center">
-                  
-
-
-                    <div class="container-@location.ID container-fluid">
-                        <h1 class="display-1 lh-1 mb-3" style="color:white;">@location.Name</h1>
-                        <p class="lead fw-normalmb-5" style="color:white;">Join the hunt across the world!</p>
-                        <img src="@location.ImageURL" alt="Home Base" style="width:100%; height: 500px;" />
-                        <p class="lead fw-normalmb-2 " style="color: white; font-size: 25px; padding-top: 5rem; justify-content: left;">
-                            @location.Description
-                        </p>
-                    </div>
-                    
-                </div>
-            </div>
-
-            <div class="container-@location.ID col-3">
+    <div class="mb-5 mb-lg-0 text-center text-lg-center">
 
 
 
-                @foreach (var item in location.items)
-                {
+        <div class="container-@location.ID container-fluid">
+            <h1 class="display-1 lh-1 mb-3" style="color:white;">@location.Name</h1>
 
+            <img src="@location.ImageURL" alt="Home Base" style="width:100%; height: 400px;" />
+            <p class="lead fw-normalmb-2 " style="color: white; font-size: 18px; padding-top: 1rem; justify-content: left;">
+                @location.Description
+            </p>
+        </div>
 
-         
+    </div>
+</div>
 
-
-
-                        <div id="container">
-
-                            <div class="product-details">
-
-                                <h1>@item.Name</h1>
-                                <p class="information">" @item.Description</p>
-
-                            </div>
-
-                            <div class="product-image">
-
-                                <img src="@item.ImageURL" />
-
-
-                                <div class="info">
-                                    <h2> Description</h2>
-                                    <ul>
-                                        <li><strong>Item Type : </strong>@item.ItemType</li>
-                                        <li><strong>Category : </strong>@item.GroupType</li>
-                                    </ul>
-                                    <div class="color">
-                                        <h2 style="color: #fff;">Total Amount:</h2>
-                                        <p class="homebase" style="color: #fff;">@item.ItemCount</p>
-                                    </div>
-
-                                </div>
-                            </div>
-
-                        </div>
+                <div class="container-@location.ID col-3" style="overflow-y: scroll; scrollbar-base-color: black; height: 800px;">
 
 
 
-  
+                    @foreach (var item in location.items)
+                    {
 
 
-                    }
-
-            </div>
-            }
 
 
+
+
+    <div id="container" style="box-shadow: 1px 5px 15px 0.5px green; background: black; text-align: center; border-radius: 5px; overflow: hidden; margin: 5em auto; padding: 20px; height: 300px; width: 400px;">
+
+        <div class="product-details">
+
+            <h1>@item.Name</h1>
+            <p class="information">" @item.Description</p>
 
         </div>
+
+        <div class="product-image">
+
+            <img src="@item.ImageURL" />
+
+
+            <div class="info">
+                <h2> Description</h2>
+                <ul>
+                    <li><strong style=" padding-left: 10px;">Item Type : </strong>@item.ItemType</li>
+                    <li><strong style=" padding-left: 10px;">Category : </strong>@item.GroupType</li>
+                </ul>
+                <div class="color">
+                    <h2 style="color: #fff;">Total Amount: </h2>
+                    <p class="homebase" style="color: #fff; padding-left: 20px;">@item.ItemCount</p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>}
+
+                </div>}
+
+
+
+    </div>
 
 
     <!-- JavaScript Libraries -->
@@ -128,9 +153,9 @@
 
     <script>$(function () {
             $('.container-2').hide();
-    $('.container-3').hide();
-    $('.pouch').hide();
-    $('.bunker').hide();
+            $('.container-3').hide();
+            $('.pouch').hide();
+            $('.bunker').hide();
 
             $("#homebase").click(function () {
                 $('.container-1').fadeTo(500, 1);
@@ -141,7 +166,7 @@
                 $('.homebase').show();
             });
 
-    $("#pouch").click(function () {
+            $("#pouch").click(function () {
                 $('.container-2').fadeTo(500, 1);
                 $('.container-1').hide();
                 $('.container-3').hide();
@@ -150,7 +175,7 @@
                 $('.homebase').hide();
             });
 
-    $("#bunker").click(function () {
+            $("#bunker").click(function () {
                 $('.container-3').fadeTo(500, 1);
                 $('.container-2').hide();
                 $('.container-1').hide();
@@ -158,8 +183,154 @@
                 $('.bunker').show();
                 $('.homebase').hide();
             });
-});
-    </script>
+        });
+
+        var swiper = new Swiper('.blog-slider', {
+            spaceBetween: 30,
+            effect: 'fade',
+            loop: true,
+            mousewheel: {
+                invert: false,
+            },
+            // autoHeight: true,
+            pagination: {
+                el: '.blog-slider__pagination',
+                clickable: true,
+            }
+        });</script>
+
+    <style>
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+
+        ::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #888;
+        }
+
+
+            ::-webkit-scrollbar-thumb:hover {
+                background: #555;
+            }
+
+        .card-body {
+            margin: 0;
+            padding: 15px;
+            color: white;
+            width: 100%;
+            height: 200px;
+            background-color: black;
+        }
+
+        $white: #FEFEFE;
+        $dark: #484855;
+        $greyLight: #D1CFD2;
+        $greyDark: #9B999E;
+        $grey: #B9B5BE;
+        $red: #ef5350;
+
+        body {
+            height: 100vh;
+            background: radial-gradient(circle, #D6A664, #F9CD8F);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: roboto;
+        }
+
+        .post {
+            display: flex;
+            width: 1000px;
+        }
+
+        .post-left {
+            width: 40%;
+            background-color: $dark;
+            color: white;
+            padding: 3em;
+            position: relative;
+        }
+
+        .post-left_title {
+            font-size: 2em;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        .post-left_title_sub {
+            font-size: 2em;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-top: 0.25em;
+        }
+
+        .post-left_border {
+            border: 2px solid $red;
+            width: 15%;
+            margin-top: 1em;
+        }
+
+        .post-left_author {
+            position: absolute;
+            bottom: 2em;
+            display: flex;
+            align-items: center;
+            img
+
+        {
+            width: 2.5em;
+            margin-right: 1em;
+            border: 1px solid $white;
+            border-radius: 50%;
+        }
+
+        }
+
+        .post-right {
+            width: 60%;
+            padding: 20px;
+            color: white;
+        }
+
+        .post-right_body {
+            line-height: 2;
+            p
+
+        {
+            margin-top: 1em;
+            span
+
+        {
+            font-size: 2em;
+        }
+
+        }
+        }
+
+        .post-right_footer {
+            display: flex;
+            justify-content: space-between;
+            box-shadow: 0px -4px 3px -2px rgba(0,0,0,0.1);
+            top: -10px;
+        }
+
+        .post-right_footer_date {
+            text-transform: uppercase;
+            span
+
+        {
+            font-weight: 700;
+        }
+
+        }
+        }
+    </style>
 
 </body>
 </html>

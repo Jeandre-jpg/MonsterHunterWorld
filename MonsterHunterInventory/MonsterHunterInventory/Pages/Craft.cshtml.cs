@@ -31,13 +31,24 @@ namespace MonsterHunterInventory.Pages
 
         }
 
-        public RedirectResult CraftProduct(int productId, int count, List<int> ingredients)
-        {
-            //TODO: Call the model function and pass the name, updated count and ingredients
+        private static int i;
+
+        public void onPostCraft(int productId, int count, List<int> ingredients)
+        { 
             new ProductBook().CraftProduct(productId, count + 1, ingredients);
-
-            return Redirect("./Craft");
-
         }
+
+
+
+
+
+        //public RedirectResult CraftProduct(int productId, int count, List<int> ingredients)
+        //{
+        //    //TODO: Call the model function and pass the name, updated count and ingredients
+        //    new ProductBook().CraftProduct(productId, count + 1, ingredients);
+
+        //    return Redirect("./Craft");
+
+        //}
     }
 }

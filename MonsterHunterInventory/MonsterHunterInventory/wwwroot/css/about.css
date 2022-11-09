@@ -12183,7 +12183,7 @@ section.cta {
 
 
 .masthead {
-    background-color: #122126;
+    background-color: #000;
     padding-bottom: 5rem;
     width: 100%;
 }
@@ -12708,7 +12708,7 @@ ul.pagination .active a {
 
     .page-search .advance-search .form-control {
         border: 1px solid #fff;
-        color: #fff;
+        color: black;
     }
 
     .page-search .advance-search ::-webkit-input-placeholder {
@@ -13012,11 +13012,11 @@ ul.pagination .active a {
     }
 
     .hero-area .advance-search {
-        background: #fff;
+        background: black;
         padding: 40px 15px 25px 15px;
         border-radius: 3px;
         margin-bottom: -50px;
-        box-shadow: -1px 3px 6px rgba(0, 0, 0, 0.12);
+        box-shadow: 1px 5px 15px 0.5px green;
     }
 
 @media (max-width: 480px) {
